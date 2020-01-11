@@ -3,8 +3,10 @@ Real Estate Agent Website
 
 
 This project was built using React-Redux, MongoDB, Node.js, and Express.
-Users of this application will be able to search for rental and sale properties in a particular area. 
-This tool may be useful for Real Estate agents for the purpose of Digital Marketing.
+Users of this application will be able to search for rental and sale properties in a particular area.
+They will also be able to save their favorite properties if they create a profile using the app.
+
+This tool may be useful for Real Estate agents for the purpose of digital marketing for their business. 
 
 Currently the app is using SAMPLE dummy data provided in the SIMPLY RETS API.
 
