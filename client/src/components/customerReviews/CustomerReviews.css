@@ -1,0 +1,20 @@
+body {
+  color: black;
+}
+#reviewsContainer {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.author-img {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontalSlider___281Ls {
+  height: 200px;
+}

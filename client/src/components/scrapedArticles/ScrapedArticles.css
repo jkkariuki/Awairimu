@@ -1,0 +1,20 @@
+.jerseyDigs {
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 5px;
+  /* z-index: -1; */
+}
+
+.articlesRow {
+  height: 235px;
+  overflow: auto;
+  margin: 5px auto;
+}
+
+.btn {
+  color: white;
+  z-index: 1;
+}
