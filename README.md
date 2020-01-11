@@ -18,11 +18,11 @@ Once the credentials are provided and the connection with Simply Rets is establi
 The SimplyRETS API makes it easy to access your MLS's listing data from with any programming language.
 
 Next Steps:
-Continue working on profile page
+Continue working on profile page...
 About the Agent Page.
-Send message to agent about a particular listing.
-Delete Favorites
-Design Improvements
+Send message to agent about a particular listing...
+Delete Favorites...
+Design Improvements...
 
 
 See what I have so far!
