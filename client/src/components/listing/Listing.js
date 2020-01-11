@@ -8,6 +8,7 @@ import Footer from "../layout/footer/Footer";
 import { saveListing } from "../../actions/profile";
 import Alert from "../layout/Alert";
 import "./Listing.css";
+import Akariuki from "../../img/Akariuki.jpg";
 import { setAlert } from "../../actions/alert";
 const Listing = ({
   getListingById,
@@ -134,14 +135,15 @@ const Listing = ({
                 <div className='card'>
                   <img
                     class='card-img-top'
-                    src={
-                      "https://www.lindenllc.com/wp-content/uploads/2013/10/sample-headshot.jpg"
-                    }
+                    src={Akariuki}
                     alt='Card image'
                     style={{ width: "100%" }}
                   />
                   <div class='card-body'>
-                    <h4 class='card-title'>Alice Kariuki </h4>
+                    <p style={{ color: "black" }} class='card-title'>
+                      Alice Kariuki
+                    </p>
+                    <p>Weichert Realtor</p>
                     <form>
                       <div class='form-group'>
                         <input
@@ -164,6 +166,7 @@ const Listing = ({
                           class='form-control input-sm'
                           rows='2'
                           id='comment'
+                          placeholder='Message me about this listing'
                         ></textarea>
                       </div>
                       <button type='submit' class='btn btn-primary'>

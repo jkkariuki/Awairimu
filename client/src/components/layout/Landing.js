@@ -7,7 +7,7 @@ import Contact from "../contact/Contact";
 import Footer from "./footer/Footer";
 import ScrapedArticles from "../scrapedArticles/ScrapedArticles";
 
-import Background from "../../img/hero_1.jpg";
+import Background from "../../img/hero_2.jpg";
 
 const Landing = () => {
   return (
