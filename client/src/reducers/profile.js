@@ -1,4 +1,4 @@
-import { GET_USER, USER_ERROR } from "../actions/types";
+import { GET_USER, USER_ERROR, UPDATE_FAVES } from "../actions/types";
 
 const initialState = {
   user: null,
@@ -12,6 +12,7 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case GET_USER:
+    case UPDATE_FAVES:
       return {
         ...state,
         user: payload,

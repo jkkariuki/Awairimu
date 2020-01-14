@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { GET_USER, USER_ERROR, SAVE_LISTING } from "./types";
+import { GET_USER, USER_ERROR, SAVE_LISTING, UPDATE_FAVES } from "./types";
 
 export const getCurrentUser = () => async dispatch => {
   try {
@@ -39,5 +39,26 @@ export const saveListing = listing => async dispatch => {
     dispatch(setAlert("Listing Saved", "success"));
   } catch (err) {
     dispatch(setAlert(err.response.data.msg, "danger"));
+  }
+};
+
+//Remove Like
+export const removeListing = id => async dispatch => {
+  try {
+    console.log("ID HERE:" + id);
+    const res = await axios.put("/api/profile/unfave/" + id);
+    console.log(res.data);
+    dispatch({
+      type: UPDATE_FAVES,
+      payload: res.data
+    });
+    dispatch(setAlert("Favorites Updated", "success"));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.msg, "danger"));
+
+    // dispatch({
+    //   type: POST_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status }
+    // });
   }
 };

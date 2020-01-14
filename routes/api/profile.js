@@ -68,4 +68,40 @@ router.post("/favorites", auth, async (req, res) => {
   }
 });
 
+//@route    PUT api/profile/unfave/:id
+//@desc     unfave a listing
+//@access   Private
+router.put("/unfave/:id", auth, async (req, res) => {
+  console.log("ID HERE TOO: " + req.params.id);
+
+  try {
+    const user = await Lead.findOne({
+      _id: req.user.id
+    }).select("-password");
+
+    //Check if the post has been liked by the user.
+
+    if (
+      user.favorites.filter(favorite => favorite.mlsId === req.params.id)
+        .length < 0
+    ) {
+      return res.status(400).json({ msg: "Listing has not been favorited" });
+    }
+
+    //Get remove index
+    const removeIndex = user.favorites
+      .map(favorite => favorite.mlsId)
+      .indexOf(req.params.id);
+
+    user.favorites.splice(removeIndex, 1);
+
+    await user.save();
+
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;

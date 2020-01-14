@@ -4,9 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
 
-import { getCurrentUser } from "../../actions/profile";
+import { getCurrentUser, removeListing } from "../../actions/profile";
 
-const Dashboard = ({ getCurrentUser, profile: { user, loading } }) => {
+const Dashboard = ({
+  getCurrentUser,
+  removeListing,
+  profile: { user, loading }
+}) => {
   useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser]);
@@ -24,7 +28,7 @@ const Dashboard = ({ getCurrentUser, profile: { user, loading } }) => {
         <Fragment>
           <div class='container'>
             <h2 style={{ color: "black" }}> Hi {user.firstName} </h2>
-            <h3 style={{ color: "black" }}> Your Saved Listings</h3>
+            <h3 style={{ color: "black" }}> Check out your Saved Listings</h3>
 
             {user.favorites.map(favorite => (
               <div className='row'>
@@ -54,6 +58,17 @@ const Dashboard = ({ getCurrentUser, profile: { user, loading } }) => {
                       alt='Generic placeholder image'
                     />
                   </div>
+                  <button
+                    onClick={e => removeListing(favorite.mlsId)}
+                    type='button'
+                    class='btn btn-light'
+                    style={{ color: "black" }}
+                  >
+                    <span>
+                      Remove Listing{"  "}
+                      <i class='fas fa-thumbs-down'></i>
+                    </span>
+                  </button>
                 </div>
               </div>
             ))}
@@ -66,6 +81,8 @@ const Dashboard = ({ getCurrentUser, profile: { user, loading } }) => {
 
 Dashboard.propTypes = {
   profile: PropTypes.object.isRequired,
+  removeListing: PropTypes.func.isRequired,
+
   auth: PropTypes.object.isRequired
 };
 
@@ -74,4 +91,6 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getCurrentUser })(Dashboard);
+export default connect(mapStateToProps, { getCurrentUser, removeListing })(
+  Dashboard
+);
