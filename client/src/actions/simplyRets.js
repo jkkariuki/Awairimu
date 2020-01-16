@@ -9,7 +9,7 @@ import {
 
 export const getJClistings = () => async dispatch => {
   try {
-    const res = await axios.get("/api/trulia/featuredListings");
+    const res = await axios.get("/api/simplyRets/featuredListings");
     const response = res.data.result.listings;
     dispatch({
       type: GET_LISTINGS,

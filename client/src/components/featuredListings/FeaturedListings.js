@@ -8,11 +8,11 @@ import img4 from "./img/img_4.jpg";
 import img5 from "./img/img_5.jpg";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
-import { getJClistings } from "../../actions/trulia";
-import { getAllRetsListings } from "../../actions/trulia";
+import { getJClistings } from "../../actions/simplyRets";
+import { getAllRetsListings } from "../../actions/simplyRets";
 
-import { search } from "../../actions/trulia";
-import { simplyRetsSearch } from "../../actions/trulia";
+import { search } from "../../actions/simplyRets";
+import { simplyRetsSearch } from "../../actions/simplyRets";
 
 import Pagination from "../layout/Pagination";
 
@@ -117,9 +117,9 @@ FeaturedListings.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  listings: state.trulia.listings,
-  searchResults: state.trulia.searhResults,
-  loading: state.trulia.loading
+  listings: state.simplyRets.listings,
+  searchResults: state.simplyRets.searhResults,
+  loading: state.simplyRets.loading
 });
 export default connect(mapStateToProps, {
   getJClistings,

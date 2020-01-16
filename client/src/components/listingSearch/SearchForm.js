@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { search } from "../../actions/trulia";
-import { simplyRetsSearch } from "../../actions/trulia";
+import { search } from "../../actions/simplyRets";
+import { simplyRetsSearch } from "../../actions/simplyRets";
 
 import { connect } from "react-redux";
 import "./style.css";
@@ -97,7 +97,7 @@ SearchForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  loading: state.trulia.loading
+  loading: state.simplyRets.loading
 });
 
 export default connect(mapStateToProps, { search, simplyRetsSearch })(

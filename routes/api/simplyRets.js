@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator/check");
 const config = require("config");
+const auth = require("../../middleware/auth");
+const Lead = require("../../models/Lead");
+
 const request = require("request");
 
 //@route  GET api/trulia

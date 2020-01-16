@@ -1,7 +1,13 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { GET_USER, USER_ERROR, SAVE_LISTING, UPDATE_FAVES } from "./types";
+import {
+  GET_USER,
+  USER_ERROR,
+  SAVE_LISTING,
+  UPDATE_FAVES,
+  LISTING_MSG
+} from "./types";
 
 export const getCurrentUser = () => async dispatch => {
   try {
@@ -58,6 +64,36 @@ export const removeListing = id => async dispatch => {
 
     // dispatch({
     //   type: POST_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status }
+    // });
+  }
+};
+
+export const listingMsg = (listing, formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const res = await axios.post("/api/profile/message/", {
+      listing,
+      formData,
+      config
+    });
+
+    dispatch({
+      type: LISTING_MSG,
+      payload: res.data
+    });
+
+    dispatch(setAlert("Message Sent", "success"));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.msg, "danger"));
+
+    // dispatch({
+    //   type: MSG_ERROR,
     //   payload: { msg: err.response.statusText, status: err.response.status }
     // });
   }

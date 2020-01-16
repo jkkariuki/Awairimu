@@ -21,18 +21,16 @@ const Landing = () => {
             <div
               style={{ marginTop: "220px" }}
               className='col-lg-6 col-sm-12 col-md-10 text-left ml-auto'
-            >
-              <SearchForm />
-            </div>
+            ></div>
           </div>
           <a href='#next-section' className='smoothscroll scroll-down'>
             Scroll Down
           </a>
         </div>
+        <SearchForm />
         <FeaturedListings />
         <CustomerReviews />
         <ScrapedArticles />
-        <Contact />
         <Footer />
       </section>
     </div>

@@ -16,7 +16,7 @@ app.use("/api/leadAuth", require("./routes/api/leadAuth"));
 app.use("/api/adminProfile", require("./routes/api/adminProfile"));
 app.use("/api/leads", require("./routes/api/leads"));
 app.use("/api/profile", require("./routes/api/profile"));
-app.use("/api/trulia", require("./routes/api/trulia"));
+app.use("/api/simplyRets", require("./routes/api/simplyRets"));
 
 //Serve static assets in production
 if (process.env.NODE_ENV === "production") {

@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import alert from "./alert";
 import auth from "./auth";
 
-import trulia from "./trulia";
+import simplyRets from "./simplyRets";
 import profile from "./profile";
 
 import articleScraper from "./articleScraper";
@@ -10,7 +10,7 @@ import articleScraper from "./articleScraper";
 export default combineReducers({
   alert,
   auth,
-  trulia,
+  simplyRets,
   articleScraper,
   profile
 });

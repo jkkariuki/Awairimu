@@ -3,15 +3,18 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
-import { getListingById } from "../../actions/trulia";
+import { getListingById } from "../../actions/simplyRets";
 import Footer from "../layout/footer/Footer";
 import { saveListing } from "../../actions/profile";
 import Alert from "../layout/Alert";
 import "./Listing.css";
 import Akariuki from "../../img/Akariuki.jpg";
 import { setAlert } from "../../actions/alert";
+import { listingMsg } from "../../actions/profile";
+
 const Listing = ({
   getListingById,
+  listingMsg,
   saveListing,
   setAlert,
   listing,
@@ -19,6 +22,14 @@ const Listing = ({
   loading,
   isAuthenticated
 }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    msg: ""
+  });
+
+  const { name, phone, msg } = formData;
+
   useEffect(() => {
     getListingById(match.params.id);
   }, [getListingById, match.params.id]);
@@ -30,6 +41,17 @@ const Listing = ({
       saveListing(listing);
     }
   };
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async e => {
+    e.preventDefault();
+
+    listingMsg(listing, formData);
+    setAlert("Success!", "success");
+  };
+
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -144,29 +166,38 @@ const Listing = ({
                       Alice Kariuki
                     </p>
                     <p>Weichert Realtor</p>
-                    <form>
+                    <form onSubmit={e => onSubmit(e)}>
                       <div class='form-group'>
                         <input
                           type='text'
+                          name='name'
+                          value={name}
                           class='form-control input-sm'
                           id='inputName'
                           placeholder='Enter Name'
+                          onChange={e => onChange(e)}
                         />
                       </div>
                       <div class='form-group'>
                         <input
                           type='text'
+                          value={phone}
+                          name='phone'
                           class='form-control input-sm'
                           id='inputNumber'
                           placeholder='Phone Number'
+                          onChange={e => onChange(e)}
                         />
                       </div>
                       <div class='form-group'>
                         <textarea
                           class='form-control input-sm'
+                          name='msg'
+                          value={msg}
                           rows='2'
                           id='comment'
                           placeholder='Message me about this listing'
+                          onChange={e => onChange(e)}
                         ></textarea>
                       </div>
                       <button type='submit' class='btn btn-primary'>
@@ -187,6 +218,7 @@ const Listing = ({
 
 Listing.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  listingMsg: PropTypes.func.isRequired,
   getListingById: PropTypes.func.isRequired,
   saveListing: PropTypes.func.isRequired,
   listing: PropTypes.object.isRequired,
@@ -194,13 +226,14 @@ Listing.propTypes = {
 };
 
 const maptStateToProps = state => ({
-  listing: state.trulia.listing,
-  loading: state.trulia.loading,
+  listing: state.simplyRets.listing,
+  loading: state.simplyRets.loading,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(maptStateToProps, {
   setAlert,
   getListingById,
-  saveListing
+  saveListing,
+  listingMsg
 })(Listing);

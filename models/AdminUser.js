@@ -37,9 +37,27 @@ const UserSchema = new Schema({
   ],
   leads: [
     {
-      lead: {
+      id: {
         type: Schema.Types.ObjectId,
-        ref: "leads"
+        ref: "lead"
+      },
+      firstName: {
+        type: String
+      },
+      lastName: {
+        type: String
+      },
+      email: {
+        type: String
+      }
+    }
+  ],
+
+  messages: [
+    {
+      userId: {
+        type: Schema.Types.ObjectId,
+        ref: "lead"
       },
       name: {
         type: String
@@ -47,42 +65,15 @@ const UserSchema = new Schema({
       email: {
         type: String
       },
-      message: {
-        type: String
-      }
-    }
-  ],
-
-  listings: [
-    {
-      saleRent: {
-        type: String
-        // required: true
-      },
-      price: {
-        type: Number
-        // required: true
-      },
-      beds: {
-        type: Number
-        // required: true
-      },
-      baths: {
-        type: Number
-        // required: true
-      },
-      sqft: {
-        type: Number
-      },
-      city: {
-        type: String
-        // required: true
-      },
-      imgs: {
+      msg: {
         type: String
       },
-      link: {
-        type: String
+      listing: {
+        type: Object
+      },
+      date: {
+        type: Date,
+        default: Date.now
       }
     }
   ]

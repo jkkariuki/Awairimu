@@ -16,6 +16,7 @@ export const GET_LISTING = "GET_LISTING";
 export const GET_LISTINGS = "GET_LISTINGS";
 export const SAVE_LISTING = "SAVE_LISTING";
 export const UPDATE_FAVES = "UPDATE_FAVES";
+export const LISTING_MSG = "LISTING_MSG";
 
 export const SEARCH_LISTINGS = "SEARCH_LISTINGS";
 export const SCRAPE_ARTICLES = "SCRAPE_ARTICLES";

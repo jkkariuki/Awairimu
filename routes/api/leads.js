@@ -47,7 +47,7 @@ router.post(
       }
 
       lead = new Lead({
-        adminUser: adminUser.id,
+        // adminUser: adminUser.id,
         firstName,
         lastName,
         email,
@@ -58,6 +58,7 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       lead.password = await bcrypt.hash(password, salt);
       await lead.save();
+      await adminUser.save();
 
       //Return jsonwebtoken
 
