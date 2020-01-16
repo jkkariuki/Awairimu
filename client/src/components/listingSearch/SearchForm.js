@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { search } from "../../actions/simplyRets";
 import { simplyRetsSearch } from "../../actions/simplyRets";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import "./style.css";
@@ -20,6 +21,7 @@ const SearchForm = ({ search, simplyRetsSearch, loading }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
+    window.location.replace("#next-section");
     let loading = false;
     console.log({ city, propertyType, offerType });
     search({ city, propertyType, offerType });
@@ -82,7 +84,8 @@ const SearchForm = ({ search, simplyRetsSearch, loading }) => {
             type='submit'
             class='btn btn-success text-white btn-block rounded-0'
           >
-            <i class='icon-user icon-white' />
+            {" "}
+            <i class='fas fa-search'></i>
           </button>
         </div>
       </div>
