@@ -6,6 +6,8 @@ import Spinner from "../layout/spinner/spinner";
 import { getListingById } from "../../actions/simplyRets";
 import Footer from "../layout/footer/Footer";
 import { saveListing } from "../../actions/profile";
+import { loadUser } from "../../actions/auth";
+
 import Alert from "../layout/Alert";
 import "./Listing.css";
 import Akariuki from "../../img/Akariuki.jpg";
@@ -17,16 +19,11 @@ const Listing = ({
   listingMsg,
   saveListing,
   setAlert,
-  listing,
+  listing: { listing, loading },
   match,
-  loading,
-  isAuthenticated
+  auth
 }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    msg: ""
-  });
+  const [formData, setFormData] = useState("");
 
   const { name, phone, msg } = formData;
 
@@ -35,20 +32,24 @@ const Listing = ({
   }, [getListingById, match.params.id]);
 
   const checkAuth = () => {
-    if (!isAuthenticated) {
+    console.log(auth.isAuthenticated);
+    if (auth.isAuthenticated === "false") {
       setAlert("Please Login/Register to save listings!", "danger");
-    } else {
+    }
+    if (auth.isAuthenticated) {
       saveListing(listing);
+    } else {
+      setAlert("Login to Save!", "danger");
     }
   };
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = e => setFormData(e.target.value);
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    listingMsg(listing, formData);
+    listingMsg(listing, { formData });
+    setFormData("");
     setAlert("Success!", "success");
   };
 
@@ -59,52 +60,54 @@ const Listing = ({
   });
   return (
     <Fragment>
-      {listing === null || loading ? (
+      {listing === null || loading.loading ? (
         <Spinner />
       ) : (
         <Fragment>
           <section
-            class='site-hero overlay page-inside mb-4'
-            style={{ backgroundImage: "url(" + listing.photos[0] + ")" }}
+            className='site-hero overlay page-inside mb-4'
+            style={{
+              backgroundImage: "url(" + listing.photos[0] + ")"
+            }}
           >
-            <div class='container'>
-              <div class='row site-hero-inner align-items-center'>
-                <div class='col-md-7 text-left mr-auto' data-aos='fade-up'>
-                  <h1 class='heading'>
+            <div className='container'>
+              <div className='row site-hero-inner align-items-center'>
+                <div className='col-md-7 text-left mr-auto' data-aos='fade-up'>
+                  <h1 className='heading'>
                     {" "}
                     {formatter.format(listing.listPrice)}
                   </h1>
-                  <p class='sub-heading'>
+                  <p className='sub-heading'>
                     {listing.address.full}, {listing.address.city},{" "}
                     {listing.address.state}
                   </p>
                 </div>
               </div>
-              <a href='#next-section' class='smoothscroll scroll-down'>
+              <a href='#next-section' className='smoothscroll scroll-down'>
                 Scroll Down
               </a>
             </div>
           </section>
 
-          <div class='container'>
-            <div class='row mb-4'>
+          <div className='container'>
+            <div className='row mb-4'>
               <div
                 style={{ textAlign: "center", height: "300px" }}
-                class='col-md-6 mb-4 mb-md-0'
+                className='col-md-6 mb-4 mb-md-0'
               >
                 <img
                   style={{ height: "250px", width: "300px" }}
                   src={listing.photos[0]}
                   alt='Image'
-                  class='img-fluid rounded img-shadow'
+                  className='img-fluid rounded img-shadow'
                 />
               </div>
-              <div style={{ textAlign: "center" }} class='col-md-6'>
+              <div style={{ textAlign: "center" }} className='col-md-6'>
                 <img
                   style={{ height: "250px", width: "300px" }}
                   src={listing.photos[1]}
                   alt='Image'
-                  class='img-fluid rounded img-shadow'
+                  className='img-fluid rounded img-shadow'
                 />
               </div>
             </div>
@@ -116,21 +119,21 @@ const Listing = ({
                   className='listingSpecs'
                   style={{ display: "inline-block", color: "black" }}
                 >
-                  {listing.property.bedrooms} <i class='fas fa-bed'></i>
+                  {listing.property.bedrooms} <i className='fas fa-bed'></i>
                 </h3>
 
                 <h3
                   className='listingSpecs'
                   style={{ display: "inline-block", color: "black" }}
                 >
-                  {listing.property.bathsFull} <i class='fas fa-bath'></i>
+                  {listing.property.bathsFull} <i className='fas fa-bath'></i>
                 </h3>
 
                 <h3 style={{ color: "black" }}>
                   {formatter.format(listing.listPrice)}
                 </h3>
 
-                <p class='mb-2'>
+                <p className='mb-2'>
                   {" "}
                   {listing.address.full}, {listing.address.city},{" "}
                   {listing.address.state}
@@ -142,11 +145,11 @@ const Listing = ({
                   <button
                     type='button'
                     onClick={() => checkAuth()}
-                    class='btn btn-primary'
+                    className='btn btn-primary'
                   >
                     Save to favorites{" "}
                     <span>
-                      <i class='far fa-heart'></i>
+                      <i className='far fa-heart'></i>
                     </span>
                   </button>
                 </p>
@@ -156,51 +159,30 @@ const Listing = ({
               <div className='col-lg-3 offset-lg-1 col-md-4 col-sm-5'>
                 <div className='card'>
                   <img
-                    class='card-img-top'
+                    className='card-img-top'
                     src={Akariuki}
                     alt='Card image'
                     style={{ width: "100%" }}
                   />
-                  <div class='card-body'>
-                    <p style={{ color: "black" }} class='card-title'>
+                  <div className='card-body'>
+                    <p style={{ color: "black" }} className='card-title'>
                       Alice Kariuki
                     </p>
                     <p>Weichert Realtor</p>
                     <form onSubmit={e => onSubmit(e)}>
-                      <div class='form-group'>
-                        <input
-                          type='text'
-                          name='name'
-                          value={name}
-                          class='form-control input-sm'
-                          id='inputName'
-                          placeholder='Enter Name'
-                          onChange={e => onChange(e)}
-                        />
-                      </div>
-                      <div class='form-group'>
-                        <input
-                          type='text'
-                          value={phone}
-                          name='phone'
-                          class='form-control input-sm'
-                          id='inputNumber'
-                          placeholder='Phone Number'
-                          onChange={e => onChange(e)}
-                        />
-                      </div>
-                      <div class='form-group'>
+                      <div className='form-group'>
                         <textarea
-                          class='form-control input-sm'
-                          name='msg'
-                          value={msg}
+                          className='form-control input-sm'
+                          name='formData'
+                          value={formData}
                           rows='2'
                           id='comment'
                           placeholder='Message me about this listing'
                           onChange={e => onChange(e)}
+                          // required
                         ></textarea>
                       </div>
-                      <button type='submit' class='btn btn-primary'>
+                      <button type='submit' className='btn btn-primary'>
                         Submit
                       </button>
                     </form>
@@ -222,16 +204,17 @@ Listing.propTypes = {
   getListingById: PropTypes.func.isRequired,
   saveListing: PropTypes.func.isRequired,
   listing: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  auth: PropTypes.object.isRequired
 };
 
-const maptStateToProps = state => ({
-  listing: state.simplyRets.listing,
-  loading: state.simplyRets.loading,
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = state => ({
+  // listing: state.simplyRets.listing,
+  listing: state.simplyRets,
+  // loading: state.simplyRets,
+  auth: state.auth
 });
 
-export default connect(maptStateToProps, {
+export default connect(mapStateToProps, {
   setAlert,
   getListingById,
   saveListing,

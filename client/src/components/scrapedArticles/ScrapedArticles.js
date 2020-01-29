@@ -22,18 +22,19 @@ const ScrapedArticles = ({ scrapeArticles, scrapedArticles, loading }) => {
         {loading || scrapedArticles === null ? (
           <Spinner />
         ) : (
-          scrapedArticles.map(scrapedArticle => (
+          scrapedArticles.map((scrapedArticle, i) => (
             <div
+              key={i}
               style={scrapedArticle.imgs}
               className='card col-lg-4 col-md-4 col-sm-12 jerseyDigs'
               // style={{ width: "18rem;" }}
             >
-              <div class='card-body'>
-                <h5 style={{ zIndex: "1" }} class='card-title'>
+              <div className='card-body'>
+                <h5 style={{ zIndex: "1" }} className='card-title'>
                   {scrapedArticle.title}
                 </h5>
               </div>
-              <a href={scrapedArticle.links} target='_blank' class='btn'>
+              <a href={scrapedArticle.links} target='_blank' className='btn'>
                 Continue Reading @ JerseyDigs.com{" "}
               </a>
             </div>
@@ -52,7 +53,7 @@ ScrapedArticles.propTypes = {
 
 const mapStateToProps = state => ({
   scrapedArticles: state.articleScraper.scrapedArticles,
-  loading: state.loading
+  loading: state.articleScraper.loading
 });
 
 export default connect(mapStateToProps, { scrapeArticles })(ScrapedArticles);

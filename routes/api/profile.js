@@ -9,6 +9,9 @@ const auth = require("../../middleware/auth");
 const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 
+//@route    GET api/profile/my-profile
+//@desc     load logged in user profile
+//@access   Private
 router.get("/my-profile", auth, async (req, res) => {
   try {
     const user = await Lead.findOne({
@@ -27,8 +30,11 @@ router.get("/my-profile", auth, async (req, res) => {
   }
 });
 
+//@route    POST api/profile/favorites
+//@desc     favorite a listing
+//@access   Private
 router.post("/favorites", auth, async (req, res) => {
-  console.log("HELLO THERE", req.body.privateRemarks);
+  // console.log("HELLO THERE", req.body.privateRemarks);
 
   const newFave = {
     mlsId: req.body.mlsId,
@@ -71,11 +77,9 @@ router.post("/favorites", auth, async (req, res) => {
 });
 
 //@route    PUT api/profile/unfave/:id
-//@desc     unfave a listing
+//@desc     unfavorite a listing
 //@access   Private
 router.put("/unfave/:id", auth, async (req, res) => {
-  console.log("ID HERE TOO: " + req.params.id);
-
   try {
     const user = await Lead.findOne({
       _id: req.user.id
@@ -114,16 +118,13 @@ router.post(
   [
     auth,
     [
-      check("name", "Please enter your name"),
-      check("phone", "Plese enter your phone#"),
-      check("msg", "Message cannot be blank")
+      check("formData", "Message cannot be blank")
         .not()
         .isEmpty()
     ]
   ],
   async (req, res) => {
-    //console.log("REQUEST " + JSON.stringify(req.user.id));
-    const errors = validationResult(req.body.formData);
+    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -140,8 +141,7 @@ router.post(
         userId: user._id,
         name: user.firstName + user.lastName,
         email: user.email,
-        phone: JSON.stringify(req.body.formData.phone),
-        msg: JSON.stringify(req.body.formData.msg),
+        msg: JSON.stringify(req.body.formData),
         listing: JSON.stringify(req.body.listing)
       };
 

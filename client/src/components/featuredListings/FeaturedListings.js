@@ -1,45 +1,30 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import img1 from "./img/img_1.jpg";
-import img2 from "./img/img_2.jpg";
-import img3 from "./img/img_3.jpg";
-import img4 from "./img/img_4.jpg";
-import img5 from "./img/img_5.jpg";
+
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
-import { getJClistings } from "../../actions/simplyRets";
 import { getAllRetsListings } from "../../actions/simplyRets";
-
-import { search } from "../../actions/simplyRets";
 import { simplyRetsSearch } from "../../actions/simplyRets";
-
 import Pagination from "../layout/Pagination";
 
 const FeaturedListings = ({
-  //getJClistings,
   getAllRetsListings,
-  search,
-  searchResults,
+  // searchResults,
   listings,
   loading,
   simplyRetsSearch
 }) => {
-  useEffect(
-    () => {
-      //getJClistings();
-      getAllRetsListings();
-    },
-    [getAllRetsListings]
-    //[getJClistings]
-  );
+  useEffect(() => {
+    getAllRetsListings();
+  }, [getAllRetsListings]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [listingsPerPage] = useState(8);
   const indexOfLastListing = currentPage * listingsPerPage;
   const indexOfFirstListing = indexOfLastListing - listingsPerPage;
 
-  console.log(searchResults);
+  // console.log(searchResults);
 
   const currentListings = listings.slice(
     indexOfFirstListing,
@@ -54,44 +39,47 @@ const FeaturedListings = ({
   });
 
   return (
-    <section class='section visit-section' id='next-section'>
-      <div class='container'>
-        <div class='row'>
-          <div class='col-md-12'>
-            <h2 class='heading' data-aos='fade-up'>
+    <section className='section visit-section' id='next-section'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-12'>
+            <h2 className='heading' data-aos='fade-up'>
               Popular Properties
             </h2>
           </div>
         </div>
-        <div class='row'>
+        <div className='row'>
           {loading || currentListings === null ? (
             <Spinner />
           ) : (
-            currentListings.map(listing => (
-              <div class='col-lg-3 col-md-6 visit mb-3' data-aos='fade-up'>
+            currentListings.map((listing, i) => (
+              <div
+                key={i}
+                className='col-lg-3 col-md-6 visit mb-3'
+                data-aos='fade-up'
+              >
                 <Link to={`/listing/${listing.mlsId}`}>
                   <img
                     style={{ height: "260px", width: "350px" }}
                     src={listing.photos[0]}
                     alt='Image placeholder'
-                    class='img-fluid rounded'
+                    className='img-fluid rounded'
                   />{" "}
-                  <h3>
-                    {listing.sta === "For Rent" ? (
-                      <Link to='property-single.html'>
-                        ${listing.prc}/month
-                      </Link>
-                    ) : (
-                      <Link to='property-single.html'>
-                        {formatter.format(listing.listPrice)}
-                      </Link>
-                    )}
-                  </h3>
-                  <div class='reviews-star float-left'>
-                    {listing.address.full}, {listing.address.city},{" "}
-                    {listing.address.state}
-                  </div>
                 </Link>
+
+                <h3>
+                  {listing.sta === "For Rent" ? (
+                    <Link to='property-single.html'>${listing.prc}/month</Link>
+                  ) : (
+                    <Link to='property-single.html'>
+                      {formatter.format(listing.listPrice)}
+                    </Link>
+                  )}
+                </h3>
+                <div className='reviews-star float-left'>
+                  {listing.address.full}, {listing.address.city},{" "}
+                  {listing.address.state}
+                </div>
               </div>
             ))
           )}
@@ -107,23 +95,19 @@ const FeaturedListings = ({
 };
 
 FeaturedListings.propTypes = {
-  getJClistings: PropTypes.func.isRequired,
   getAllRetsListings: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
   listings: PropTypes.array.isRequired,
-  searchResults: PropTypes.array.isRequired,
+  // searchResults: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   simplyRetsSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   listings: state.simplyRets.listings,
-  searchResults: state.simplyRets.searhResults,
+  // searchResults: state.simplyRets.searhResults,
   loading: state.simplyRets.loading
 });
 export default connect(mapStateToProps, {
-  getJClistings,
   getAllRetsListings,
-  search,
   simplyRetsSearch
 })(FeaturedListings);

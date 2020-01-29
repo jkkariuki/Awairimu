@@ -60,8 +60,6 @@ router.post(
       await lead.save();
       await adminUser.save();
 
-      //Return jsonwebtoken
-
       const payload = {
         user: {
           id: lead.id
@@ -70,6 +68,8 @@ router.post(
 
       adminUser.leads.unshift(lead);
       await adminUser.save();
+
+      //Return jsonwebtoken
 
       jwt.sign(
         payload,

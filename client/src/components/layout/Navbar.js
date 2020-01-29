@@ -7,34 +7,34 @@ import { logout } from "../../actions/auth";
 
 const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <nav class='navbar navbar-expand-md bg-dark navbar-dark'>
-      <Link class='navbar-brand' to='/'>
+    <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
+      <Link className='navbar-brand' to='/'>
         Alice Kariuki, Your Agent
       </Link>
 
       <button
-        class='navbar-toggler'
+        className='navbar-toggler'
         type='button'
         data-toggle='collapse'
         data-target='#collapsibleNavbar'
       >
-        <span class='navbar-toggler-icon'></span>
+        <span className='navbar-toggler-icon'></span>
       </button>
 
-      <div class='collapse navbar-collapse' id='collapsibleNavbar'>
-        <ul class='navbar-nav'>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/about'>
+      <div className='collapse navbar-collapse' id='collapsibleNavbar'>
+        <ul className='navbar-nav'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/about'>
               About
             </Link>
           </li>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/reviews'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/reviews'>
               Reviews
             </Link>
           </li>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/my-profile'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/my-profile'>
               Dashboard
             </Link>
           </li>
@@ -42,7 +42,7 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </div>
 
       <div>
-        <Link onClick={logout} class='nav-link' to='/'>
+        <Link onClick={logout} className='nav-link' to='/'>
           <i className='fas fa-sign-out-alt hide-sm'>
             <span>Logout</span>
           </i>
@@ -52,34 +52,34 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <nav class='navbar navbar-expand-md bg-dark navbar-dark'>
-      <Link class='navbar-brand' to='/'>
+    <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
+      <Link className='navbar-brand' to='/'>
         Alice Kariuki, Your Agent
       </Link>
 
       <button
-        class='navbar-toggler'
+        className='navbar-toggler'
         type='button'
         data-toggle='collapse'
         data-target='#collapsibleNavbar'
       >
-        <span class='navbar-toggler-icon'></span>
+        <span className='navbar-toggler-icon'></span>
       </button>
 
-      <div class='collapse navbar-collapse' id='collapsibleNavbar'>
-        <ul class='navbar-nav'>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/about'>
+      <div className='collapse navbar-collapse' id='collapsibleNavbar'>
+        <ul className='navbar-nav'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/about'>
               About
             </Link>
           </li>
-          <li class='nav-item'>
-            <Link class='nav-link' to='/reviews'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/reviews'>
               Reviews
             </Link>
           </li>
-          <li class='nav-item'>
-            <Link class='nav-link' to='listings'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='listings'>
               Listings
             </Link>
           </li>
@@ -87,12 +87,12 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </div>
 
       <div>
-        <Link class='nav-link' to='/login'>
+        <Link className='nav-link' to='/login'>
           Login
         </Link>
       </div>
       <div>
-        <Link class='nav-link' to='/register'>
+        <Link className='nav-link' to='/register'>
           Register
         </Link>
       </div>

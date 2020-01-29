@@ -90,8 +90,8 @@ export const listingMsg = (listing, formData) => async dispatch => {
 
     dispatch(setAlert("Message Sent", "success"));
   } catch (err) {
-    dispatch(setAlert(err.response.data.msg, "danger"));
-
+    dispatch(setAlert("Please Login", "danger"));
+    // console.log("Errors Here:" + err.resonse.data);
     // dispatch({
     //   type: MSG_ERROR,
     //   payload: { msg: err.response.statusText, status: err.response.status }

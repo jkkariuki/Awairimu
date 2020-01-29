@@ -4,116 +4,103 @@ const { check, validationResult } = require("express-validator/check");
 const config = require("config");
 const auth = require("../../middleware/auth");
 const Lead = require("../../models/Lead");
-
 const request = require("request");
 
-//@route  GET api/trulia
-//@desc   Get featured Listings from Trulia
+//@route  GET api/simplyRets
+//@desc   Get Listing by mlsId from simplyRets
 //@access Public
 
-router.get("/featuredListings", async (req, res) => {
+router.get("/listing/:listingId", async (req, res) => {
   try {
-    var options = await {
+    console.log(req.params.listingId);
+
+    const options = await {
       method: "GET",
       port: "http://localhost:5000",
-      url: "https://trulia.p.rapidapi.com/properties/list",
-      qs: {
-        sortType: "price",
-        location: "NJ",
-        city: "Jersey City",
-        lat: "40.0583",
-        state: "NJ",
-        type: "city",
-        sortAscending: "true",
-        offset: "0",
-        limit: "20",
-        searchType: "for_sale",
-        lng: "74.4057",
-        id: "7850"
-      },
-      headers: {
-        // "x-rapidapi-host": "trulia.p.rapidapi.com",
-        // "x-rapidapi-key": "3a25ce53b1msh6f93fc2c6aafe61p13000fjsnf5b80b71475e",
-        "content-type": "application/json",
-        "user-agent": "node.js"
+
+      url: `https://api.simplyrets.com/properties/${req.params.listingId}`,
+      auth: {
+        username: "simplyrets",
+        password: "simplyrets"
       }
     };
 
     request(options, (error, response, body) => {
-      if (error) console.error;
+      if (error) console.log(error);
 
       if (response.statusCode !== 200) {
-        return res.status(400).json({ msg: "Error" });
+        return res.status(400).json({ msg: "No Github profile found" });
+      }
+      console.log(JSON.parse(body));
+      res.json(JSON.parse(body));
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+//@route  POST api/simplyRets
+//@desc   search Listings by city and offer type(sale or rental) from simplyRets
+//@access Public
+
+router.post("/search", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const options = await {
+      method: "GET",
+      port: "http://localhost:5000",
+
+      url: `https://api.simplyrets.com/properties?q=${req.body.city}&type=${req.body.offerType}&limit=500&idx=null&count=true`,
+      auth: {
+        username: "simplyrets",
+        password: "simplyrets"
+      }
+    };
+
+    request(options, (error, response, body) => {
+      if (error) console.log(error);
+
+      if (response.statusCode !== 200) {
+        return res.status(400).json({ msg: "No Github profile found" });
       }
       res.json(JSON.parse(body));
     });
   } catch (err) {
     console.error(err.message);
-
     res.status(500).send("Server Error");
   }
 });
 
-//@route  POST api/trulia
-//@desc   User searched Listings from Trulia
+//@route  POST api/simplyRets
+//@desc   load all Listings from simplyRets
 //@access Public
-router.post(
-  "/searchListings",
-  [
-    check("city", "Please choose a city?")
-      .not()
-      .isEmpty()
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    const { city, propertyType, offerType } = req.body;
+router.post("/listings", async (req, res) => {
+  try {
+    const options = await {
+      method: "GET",
+      // port: "http://localhost:5000",
 
-    console.log(city, propertyType, offerType);
-    try {
-      var options = await {
-        method: "GET",
-        port: "http://localhost:5000",
-        url: "https://trulia.p.rapidapi.com/properties/list",
-        qs: {
-          sortType: "price",
-          location: "NJ",
-          city: city + "",
-          lat: "40.0583",
-          state: "NJ",
-          type: "city",
-          sortAscending: "true",
-          offset: "0",
-          limit: "20",
-          searchType: offerType + "",
-          lng: "74.4057",
-          id: "7850"
-        },
-        headers: {
-          "x-rapidapi-host": "trulia.p.rapidapi.com",
-          // "x-rapidapi-key":
-          // "3a25ce53b1msh6f93fc2c6aafe61p13000fjsnf5b80b71475e",
-          "content-type": "application/json",
-          "user-agent": "node.js"
-        }
-      };
+      url: `https://api.simplyrets.com/properties?limit=500&idx=null&count=true`,
+      auth: {
+        username: "simplyrets",
+        password: "simplyrets"
+      }
+    };
 
-      request(options, (error, response, body) => {
-        if (error) console.error;
+    request(options, (error, response, body) => {
+      if (error) console.log(error);
 
-        if (response.statusCode !== 200) {
-          return res.status(400).json({ msg: "Error" });
-        }
-        console.log(body);
-        res.json(JSON.parse(body));
-      });
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
+      if (response.statusCode !== 200) {
+        return res.status(400).json({ msg: "No Github profile found" });
+      }
+      res.json(JSON.parse(body));
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
-);
+});
 
 module.exports = router;

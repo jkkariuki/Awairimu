@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import img from "../../img/round.png";
+// import img from "../../img/round.png";
 import { carousel } from "../layout/carousel";
 import "./CustomerReviews.css";
 import { connect } from "react-redux";
@@ -37,7 +37,7 @@ const CustomerReviews = () => {
           <Slide index={0}>
             <div className='reviewDiv'>
               <div>
-                <img src={{}} alt='Image placeholder' class='rounded-circle' />
+                <img alt='Image placeholder' className='rounded-circle' />
               </div>
               <blockquote>
                 <p>
@@ -56,11 +56,7 @@ const CustomerReviews = () => {
             {" "}
             <div className='reviewDiv'>
               <div>
-                <img
-                  src='img/person_1.jpg'
-                  alt='Image placeholder'
-                  class='rounded-circle'
-                />
+                <img alt='Image placeholder' className='rounded-circle' />
               </div>
               <blockquote>
                 <p>
@@ -79,11 +75,7 @@ const CustomerReviews = () => {
             {" "}
             <div className='reviewDiv'>
               <div>
-                <img
-                  src='img/person_1.jpg'
-                  alt='Image placeholder'
-                  class='rounded-circle'
-                />
+                <img alt='Image placeholder' className='rounded-circle' />
               </div>
               <blockquote>
                 <p>
