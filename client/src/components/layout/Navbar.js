@@ -34,8 +34,8 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to='/my-profile'>
-              Dashboard
+            <Link className='nav-link' to='/saved'>
+              Saved Listings
             </Link>
           </li>
         </ul>

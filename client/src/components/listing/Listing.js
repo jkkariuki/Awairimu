@@ -11,6 +11,7 @@ import { loadUser } from "../../actions/auth";
 import Alert from "../layout/Alert";
 import "./Listing.css";
 import Akariuki from "../../img/Akariuki.jpg";
+import logo from "../../img/logo.jpg";
 import { setAlert } from "../../actions/alert";
 import { listingMsg } from "../../actions/profile";
 
@@ -29,7 +30,7 @@ const Listing = ({
 
   useEffect(() => {
     getListingById(match.params.id);
-  }, [getListingById, match.params.id]);
+  }, [getListingById]);
 
   const checkAuth = () => {
     console.log(auth.isAuthenticated);
@@ -160,15 +161,15 @@ const Listing = ({
                 <div className='card'>
                   <img
                     className='card-img-top'
-                    src={Akariuki}
+                    src={logo}
                     alt='Card image'
                     style={{ width: "100%" }}
                   />
                   <div className='card-body'>
                     <p style={{ color: "black" }} className='card-title'>
-                      Alice Kariuki
+                      City Group
                     </p>
-                    <p>Weichert Realtor</p>
+                    <p>Remax Realtors</p>
                     <form onSubmit={e => onSubmit(e)}>
                       <div className='form-group'>
                         <textarea
@@ -179,7 +180,7 @@ const Listing = ({
                           id='comment'
                           placeholder='Message me about this listing'
                           onChange={e => onChange(e)}
-                          // required
+                          required
                         ></textarea>
                       </div>
                       <button type='submit' className='btn btn-primary'>
@@ -191,7 +192,6 @@ const Listing = ({
               </div>
             </div>
           </div>
-          <Footer />
         </Fragment>
       )}
     </Fragment>

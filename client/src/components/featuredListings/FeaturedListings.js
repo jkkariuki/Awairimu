@@ -10,7 +10,6 @@ import Pagination from "../layout/Pagination";
 
 const FeaturedListings = ({
   getAllRetsListings,
-  // searchResults,
   listings,
   loading,
   simplyRetsSearch
@@ -23,8 +22,6 @@ const FeaturedListings = ({
   const [listingsPerPage] = useState(8);
   const indexOfLastListing = currentPage * listingsPerPage;
   const indexOfFirstListing = indexOfLastListing - listingsPerPage;
-
-  // console.log(searchResults);
 
   const currentListings = listings.slice(
     indexOfFirstListing,
@@ -97,14 +94,12 @@ const FeaturedListings = ({
 FeaturedListings.propTypes = {
   getAllRetsListings: PropTypes.func.isRequired,
   listings: PropTypes.array.isRequired,
-  // searchResults: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   simplyRetsSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   listings: state.simplyRets.listings,
-  // searchResults: state.simplyRets.searhResults,
   loading: state.simplyRets.loading
 });
 export default connect(mapStateToProps, {

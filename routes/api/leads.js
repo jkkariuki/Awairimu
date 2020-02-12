@@ -8,7 +8,7 @@ const AdminUser = require("../../models/AdminUser");
 const Lead = require("../../models/Lead");
 
 //@route  Post api/leads
-//@desc   Test route
+//@desc   Register new leads(users) route
 //@access Public
 router.post(
   "/",

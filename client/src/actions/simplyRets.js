@@ -8,9 +8,9 @@ import {
 } from "./types";
 
 //get listing by id
-export const getListingById = listingId => async dispatch => {
+export const getListingById = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/simplyRets/listing/${listingId}`);
+    const res = await axios.get(`/api/simplyRets/listing/${id}`);
 
     console.log(res.data);
     dispatch({

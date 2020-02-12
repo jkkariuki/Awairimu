@@ -1,18 +1,16 @@
 const express = require("express");
 const request = require("request");
 const { check, validationResult } = require("express-validator/check");
-
 const config = require("config");
 const router = express.Router();
 const auth = require("../../middleware/auth");
-
 const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 
-//@route    GET api/profile/my-profile
+//@route    GET api/profile/myprofile
 //@desc     load logged in user profile
 //@access   Private
-router.get("/my-profile", auth, async (req, res) => {
+router.get("/myprofile", auth, async (req, res) => {
   try {
     const user = await Lead.findOne({
       _id: req.user.id
@@ -34,8 +32,6 @@ router.get("/my-profile", auth, async (req, res) => {
 //@desc     favorite a listing
 //@access   Private
 router.post("/favorites", auth, async (req, res) => {
-  // console.log("HELLO THERE", req.body.privateRemarks);
-
   const newFave = {
     mlsId: req.body.mlsId,
     address: req.body.address.full,

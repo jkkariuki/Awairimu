@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { carousel } from "../layout/carousel";
 import "./CustomerReviews.css";
 import { connect } from "react-redux";
+import reviewer1 from "../../img/reviewer1.jpg";
+import reviewer2 from "../../img/reviewer2.jpg";
+
 import {
   CarouselProvider,
   Slider,
@@ -23,6 +26,7 @@ const CustomerReviews = () => {
       }}
       className='container'
     >
+      <h3 id='reviewsHeader'>Satisfied Customers!</h3>
       <CarouselProvider
         style={{
           height: "300px",
@@ -37,7 +41,11 @@ const CustomerReviews = () => {
           <Slide index={0}>
             <div className='reviewDiv'>
               <div>
-                <img alt='Image placeholder' className='rounded-circle' />
+                <img
+                  src={reviewer1}
+                  alt='Image placeholder'
+                  className='rounded-circle'
+                />
               </div>
               <blockquote>
                 <p>
@@ -56,7 +64,11 @@ const CustomerReviews = () => {
             {" "}
             <div className='reviewDiv'>
               <div>
-                <img alt='Image placeholder' className='rounded-circle' />
+                <img
+                  src={reviewer2}
+                  alt='Image placeholder'
+                  className='rounded-circle'
+                />
               </div>
               <blockquote>
                 <p>
@@ -75,7 +87,11 @@ const CustomerReviews = () => {
             {" "}
             <div className='reviewDiv'>
               <div>
-                <img alt='Image placeholder' className='rounded-circle' />
+                <img
+                  src={reviewer2}
+                  alt='Image placeholder'
+                  className='rounded-circle'
+                />
               </div>
               <blockquote>
                 <p>

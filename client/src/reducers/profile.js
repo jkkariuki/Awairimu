@@ -2,7 +2,8 @@ import {
   GET_USER,
   USER_ERROR,
   UPDATE_FAVES,
-  LISTING_MSG
+  LISTING_MSG,
+  LOGOUT
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +29,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         error: payload,
+        loading: false
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
         loading: false
       };
     default:

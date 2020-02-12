@@ -1,10 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import logo from "../../img/logo.jpg";
+
 import Akariuki from "../../img/Akariuki.jpg";
 const About = props => {
   return (
     <div>
-      <div class='jumbotron jumbotron-fluid'>
+      <div
+        style={{
+          backgroundColor: "#2E86C1"
+        }}
+        class='jumbotron jumbotron-fluid'
+      >
         <div class='container'>
           <h1 class='display-4'>About</h1>
         </div>
@@ -40,12 +47,12 @@ const About = props => {
             className='col-lg-4 col-md-4 col-sm-12 center-sm'
           >
             <div style={{ width: "200px", margin: "0 auto" }} className='card'>
-              <img className='card-img-top' src={Akariuki} alt='Card image' />
+              <img className='card-img-top' src={logo} alt='Card image' />
               <div className='card-body'>
                 <p style={{ color: "black" }} className='card-title'>
-                  Alice Kariuki
+                  City Group
                 </p>
-                <p>Weichert Realtor</p>
+                <p>Remax Realtors</p>
                 <form>
                   <div className='form-group'>
                     <textarea

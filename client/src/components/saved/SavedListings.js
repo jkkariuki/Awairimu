@@ -6,7 +6,7 @@ import Spinner from "../layout/spinner/spinner";
 
 import { getCurrentUser, removeListing } from "../../actions/profile";
 
-const Dashboard = ({
+const SavedListings = ({
   getCurrentUser,
   removeListing,
   profile: { user, loading }
@@ -97,7 +97,7 @@ const Dashboard = ({
   );
 };
 
-Dashboard.propTypes = {
+SavedListings.propTypes = {
   profile: PropTypes.object.isRequired,
   removeListing: PropTypes.func.isRequired,
 
@@ -110,5 +110,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getCurrentUser, removeListing })(
-  Dashboard
+  SavedListings
 );

@@ -8,7 +8,7 @@ const config = require("config");
 const { check, validationResult } = require("express-validator/check");
 
 //@route  GET api/leadAuth
-//@desc   Test route
+//@desc   Check for logged in users route
 //@access Private
 router.get("/", auth, async (req, res) => {
   try {

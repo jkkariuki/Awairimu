@@ -10,15 +10,15 @@ const request = require("request");
 //@desc   Get Listing by mlsId from simplyRets
 //@access Public
 
-router.get("/listing/:listingId", async (req, res) => {
+router.get("/listing/:id", async (req, res) => {
   try {
-    console.log(req.params.listingId);
+    console.log(req.params.id);
 
     const options = await {
       method: "GET",
       port: "http://localhost:5000",
 
-      url: `https://api.simplyrets.com/properties/${req.params.listingId}`,
+      url: `https://api.simplyrets.com/properties/${req.params.id}`,
       auth: {
         username: "simplyrets",
         password: "simplyrets"
