@@ -1,27 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import logo from "../../img/logo.jpg";
-
+import "./About.css";
 import Akariuki from "../../img/Akariuki.jpg";
+import agentphoto1 from "../../img/agentphoto1.jpg";
+
 const About = props => {
   return (
     <div>
-      <div
-        style={{
-          backgroundColor: "#2E86C1"
-        }}
-        class='jumbotron jumbotron-fluid'
-      >
+      <div className='jumbotron jumbotron-fluid'>
         <div class='container'>
           <h1 class='display-4'>About</h1>
         </div>
       </div>
+
       <div style={{ marginTop: "70px" }} className='container'>
         <div className='row'>
-          <div
-            style={{ marginTop: "20px" }}
-            className='col-lg-4 col-md-4 col-sm-12'
-          >
+          <div className='col-lg-4 col-md-4 col-sm-12 about-item'>
+            <h2 className='sectionHeaders'>Our Mission</h2>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -30,10 +26,9 @@ const About = props => {
               aspernatur aut odit aut fugit, sed quia consequuntur magni
             </p>
           </div>
-          <div
-            style={{ marginTop: "20px" }}
-            className='col-lg-4 col-md-4 col-sm-12'
-          >
+
+          <div className='col-lg-4 col-md-4 col-sm-12 about-item'>
+            <h2 className='sectionHeaders'>Philosophy</h2>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -42,10 +37,12 @@ const About = props => {
               aspernatur aut odit aut fugit, sed quia consequuntur magni
             </p>
           </div>
+
           <div
             style={{ marginTop: "20px" }}
             className='col-lg-4 col-md-4 col-sm-12 center-sm'
           >
+            {" "}
             <div style={{ width: "200px", margin: "0 auto" }} className='card'>
               <img className='card-img-top' src={logo} alt='Card image' />
               <div className='card-body'>
@@ -70,6 +67,39 @@ const About = props => {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className='row agent-section'>
+          <div
+            style={{ marginTop: "20px" }}
+            className='col-lg-5 col-md-4 col-sm-12'
+          >
+            <img className='agentPhoto' src={agentphoto1} />
+
+            <h2 className='sectionHeaders'>Agent #1</h2>
+            <p className='agentDescript'>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur magni
+            </p>
+          </div>
+          <div
+            style={{ marginTop: "20px" }}
+            className='col-lg-5 col-md-4 col-sm-12'
+          >
+            <img className='agentPhoto' src={agentphoto1} />
+
+            <h2 className='sectionHeaders'>Agent #2</h2>
+            <p className='agentDescript'>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur magni
+            </p>
           </div>
         </div>
       </div>

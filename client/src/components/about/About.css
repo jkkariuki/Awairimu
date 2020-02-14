@@ -1,0 +1,33 @@
+.jumbotron {
+  background-image: url("../../img/kitchen.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: -2;
+  padding: 6rem 4rem;
+}
+
+.sectionHeaders {
+  color: black;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.agentPhoto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.agentDescript {
+  text-align: center;
+}
+
+.agent-section {
+  margin-bottom: 20px;
+}
+
+.about-item {
+  margin-top: 75px;
+}
