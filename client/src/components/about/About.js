@@ -5,7 +5,7 @@ import "./About.css";
 import Akariuki from "../../img/Akariuki.jpg";
 import agentphoto1 from "../../img/agentphoto1.jpg";
 
-const About = props => {
+const About = () => {
   return (
     <div>
       <div className='jumbotron jumbotron-fluid'>
@@ -108,7 +108,5 @@ const About = props => {
     </div>
   );
 };
-
-About.propTypes = {};
 
 export default About;

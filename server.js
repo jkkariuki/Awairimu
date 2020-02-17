@@ -10,7 +10,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Define Routes
-app.use("/api/adminUsers", require("./routes/api/adminUsers"));
+// app.use("/api/adminUsers", require("./routes/api/adminUsers"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/leadAuth", require("./routes/api/leadAuth"));
 app.use("/api/adminProfile", require("./routes/api/adminProfile"));

@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b7692910.chunk.css",
+    "main.js": "/static/js/main.bc95de15.chunk.js",
+    "main.js.map": "/static/js/main.bc95de15.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e077b804.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e077b804.js.map",
+    "static/css/2.1fd2b905.chunk.css": "/static/css/2.1fd2b905.chunk.css",
+    "static/js/2.e7295ebf.chunk.js": "/static/js/2.e7295ebf.chunk.js",
+    "static/js/2.e7295ebf.chunk.js.map": "/static/js/2.e7295ebf.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b0cba792c3a3ffc646378789c9be7ea0.js": "/precache-manifest.b0cba792c3a3ffc646378789c9be7ea0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.1fd2b905.chunk.css.map": "/static/css/2.1fd2b905.chunk.css.map",
+    "static/css/main.b7692910.chunk.css.map": "/static/css/main.b7692910.chunk.css.map",
+    "static/media/Akariuki.jpg": "/static/media/Akariuki.040710ce.jpg",
+    "static/media/agentphoto1.jpg": "/static/media/agentphoto1.cc790104.jpg",
+    "static/media/hero_2.jpg": "/static/media/hero_2.51bb18e1.jpg",
+    "static/media/About.css": "/static/media/kitchen.6cb50eea.jpg",
+    "static/media/logo.jpg": "/static/media/logo.2a04dbcc.jpg",
+    "static/media/reviewer1.jpg": "/static/media/reviewer1.3813a451.jpg",
+    "static/media/reviewer2.jpg": "/static/media/reviewer2.cc13c929.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e077b804.js",
+    "static/css/2.1fd2b905.chunk.css",
+    "static/js/2.e7295ebf.chunk.js",
+    "static/css/main.b7692910.chunk.css",
+    "static/js/main.bc95de15.chunk.js"
+  ]
+}
