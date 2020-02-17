@@ -70,10 +70,12 @@ const About = props => {
           </div>
         </div>
 
+        <h1 id='ourAgents'>Our Agents</h1>
+
         <div className='row agent-section'>
           <div
             style={{ marginTop: "20px" }}
-            className='col-lg-5 col-md-4 col-sm-12'
+            className='col-lg-6 col-md-6 col-sm-12'
           >
             <img className='agentPhoto' src={agentphoto1} />
 
@@ -88,7 +90,7 @@ const About = props => {
           </div>
           <div
             style={{ marginTop: "20px" }}
-            className='col-lg-5 col-md-4 col-sm-12'
+            className='col-lg-6 col-md-6 col-sm-12'
           >
             <img className='agentPhoto' src={agentphoto1} />
 

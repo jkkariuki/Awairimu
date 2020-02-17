@@ -65,8 +65,9 @@ const Listing = ({
         <Spinner />
       ) : (
         <Fragment>
-          <section
-            className='site-hero overlay page-inside mb-4'
+          <div
+            className='jumbotron'
+            id='listingJumbo'
             style={{
               backgroundImage: "url(" + listing.photos[0] + ")"
             }}
@@ -88,7 +89,7 @@ const Listing = ({
                 Scroll Down
               </a>
             </div>
-          </section>
+          </div>
 
           <div className='container'>
             <div className='row mb-4'>

@@ -1,0 +1,8 @@
+#landingJumbo {
+  background-image: url("../../img/hero_2.jpg");
+  background-size: "cover";
+  background-position: "center center";
+  position: "relative";
+  min-height: "700px";
+  margin-bottom: 0rem;
+}

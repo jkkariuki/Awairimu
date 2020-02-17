@@ -1,3 +1,11 @@
 .listingSpecs {
   margin-right: 10px;
 }
+
+#listingJumbo {
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: -2;
+  height: 350px;
+}
