@@ -28,11 +28,7 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               About
             </Link>
           </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/reviews'>
-              Reviews
-            </Link>
-          </li>
+
           <li className='nav-item'>
             <Link className='nav-link' to='/saved'>
               Saved Listings
@@ -71,16 +67,6 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <li className='nav-item'>
             <Link className='nav-link' to='/about'>
               About
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/reviews'>
-              Reviews
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='listings'>
-              Listings
             </Link>
           </li>
         </ul>
