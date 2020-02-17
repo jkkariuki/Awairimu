@@ -25,7 +25,7 @@ const ScrapedArticles = ({ scrapeArticles, scrapedArticles, loading }) => {
           scrapedArticles.map((scrapedArticle, i) => (
             <div
               key={i}
-              // style={scrapedArticle.imgs}
+              style={scrapedArticle.imgs}
               className='card col-lg-4 col-md-4 col-sm-12 jerseyDigs'
               // style={{ width: "18rem;" }}
             >
