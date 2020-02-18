@@ -46,7 +46,6 @@ export const scrapeArticles = () => async dispatch => {
           // .children("a")
           // .attr("href")
         );
-        console.log(imgLinks);
       }
     });
 
