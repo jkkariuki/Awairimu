@@ -72,7 +72,7 @@ const Login = ({ login, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                   <p className='text-center'>
-                    By signing up you accept our <a href='#'>Terms Of Use</a>
+                    By signing up you accept our <Link to=''>Terms Of Use</Link>
                   </p>
                 </div>
                 <div className='col-md-12 text-center '>

@@ -29,10 +29,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <Alert />
+
       <Router>
         <Fragment>
           <Navbar />
-          <Alert />
           <Switch>
             <Route exact path='/' component={Landing} />
             <Route exact path='/about' component={About} />

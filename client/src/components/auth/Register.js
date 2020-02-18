@@ -107,7 +107,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     <input
                       type='password'
                       name='password2'
-                      id='password'
                       className='form-control'
                       aria-describedby='emailHelp'
                       placeholder='Re-enter Password'

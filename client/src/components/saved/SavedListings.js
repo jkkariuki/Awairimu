@@ -63,7 +63,7 @@ const SavedListings = ({
                         class='align-self-center mr-3'
                         style={{ height: "150px", width: "200px" }}
                         src={favorite.img}
-                        alt='Generic placeholder image'
+                        alt='placeholder'
                       />
                     </div>
                     <button

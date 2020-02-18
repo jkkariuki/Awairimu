@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import logo from "../../img/logo.jpg";
 import "./About.css";
-import Akariuki from "../../img/Akariuki.jpg";
 import agentphoto1 from "../../img/agentphoto1.jpg";
 
 const About = () => {
@@ -44,7 +42,7 @@ const About = () => {
           >
             {" "}
             <div style={{ width: "200px", margin: "0 auto" }} className='card'>
-              <img className='card-img-top' src={logo} alt='Card image' />
+              <img className='card-img-top' src={logo} alt='logo' />
               <div className='card-body'>
                 <p style={{ color: "black" }} className='card-title'>
                   City Group
@@ -77,7 +75,7 @@ const About = () => {
             style={{ marginTop: "20px" }}
             className='col-lg-6 col-md-6 col-sm-12'
           >
-            <img className='agentPhoto' src={agentphoto1} />
+            <img className='agentPhoto' src={agentphoto1} alt='agent' />
 
             <h2 className='sectionHeaders'>Agent #1</h2>
             <p className='agentDescript'>
@@ -92,7 +90,7 @@ const About = () => {
             style={{ marginTop: "20px" }}
             className='col-lg-6 col-md-6 col-sm-12'
           >
-            <img className='agentPhoto' src={agentphoto1} />
+            <img className='agentPhoto' src={agentphoto1} alt='agent' />
 
             <h2 className='sectionHeaders'>Agent #2</h2>
             <p className='agentDescript'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { scrapeArticles } from "../../actions/articleScraper";
 import Spinner from "../layout/spinner/spinner";
@@ -34,9 +34,9 @@ const ScrapedArticles = ({ scrapeArticles, scrapedArticles, loading }) => {
                   {scrapedArticle.title}
                 </h5>
               </div>
-              <a href={scrapedArticle.links} target='_blank' className='btn'>
+              <Link to={scrapedArticle.links} className='btn'>
                 Continue Reading @ JerseyDigs.com{" "}
-              </a>
+              </Link>
             </div>
           ))
         )}

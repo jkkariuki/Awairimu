@@ -1,16 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
 import { getListingById } from "../../actions/simplyRets";
-import Footer from "../layout/footer/Footer";
 import { saveListing } from "../../actions/profile";
-import { loadUser } from "../../actions/auth";
 
 import Alert from "../layout/Alert";
 import "./Listing.css";
-import Akariuki from "../../img/Akariuki.jpg";
 import logo from "../../img/logo.jpg";
 import { setAlert } from "../../actions/alert";
 import { listingMsg } from "../../actions/profile";
@@ -26,11 +22,11 @@ const Listing = ({
 }) => {
   const [formData, setFormData] = useState("");
 
-  const { name, phone, msg } = formData;
+  // const { name, phone, msg } = formData;
 
   useEffect(() => {
     getListingById(match.params.id);
-  }, [getListingById]);
+  }, [getListingById, match.params.id]);
 
   const checkAuth = () => {
     console.log(auth.isAuthenticated);
@@ -100,7 +96,7 @@ const Listing = ({
                 <img
                   style={{ height: "250px", width: "300px" }}
                   src={listing.photos[0]}
-                  alt='Image'
+                  alt='placeholder'
                   className='img-fluid rounded img-shadow'
                 />
               </div>
@@ -108,7 +104,7 @@ const Listing = ({
                 <img
                   style={{ height: "250px", width: "300px" }}
                   src={listing.photos[1]}
-                  alt='Image'
+                  alt='placeholder'
                   className='img-fluid rounded img-shadow'
                 />
               </div>
@@ -163,7 +159,7 @@ const Listing = ({
                   <img
                     className='card-img-top'
                     src={logo}
-                    alt='Card image'
+                    alt='placeholder'
                     style={{ width: "100%" }}
                   />
                   <div className='card-body'>

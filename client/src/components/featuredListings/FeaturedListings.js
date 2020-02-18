@@ -59,16 +59,18 @@ const FeaturedListings = ({
                   <img
                     style={{ height: "260px", width: "350px" }}
                     src={listing.photos[0]}
-                    alt='Image placeholder'
+                    alt='placeholder'
                     className='img-fluid rounded'
                   />{" "}
                 </Link>
 
                 <h3>
                   {listing.sta === "For Rent" ? (
-                    <Link to='property-single.html'>${listing.prc}/month</Link>
+                    <Link to={`/listing/${listing.mlsId}`}>
+                      ${listing.prc}/month
+                    </Link>
                   ) : (
-                    <Link to='property-single.html'>
+                    <Link to={`/listing/${listing.mlsId}`}>
                       {formatter.format(listing.listPrice)}
                     </Link>
                   )}

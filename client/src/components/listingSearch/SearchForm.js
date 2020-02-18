@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { search } from "../../actions/simplyRets";
 import { simplyRetsSearch } from "../../actions/simplyRets";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./style.css";
 
@@ -21,7 +19,6 @@ const SearchForm = ({ simplyRetsSearch, loading }) => {
   const onSubmit = async e => {
     e.preventDefault();
     window.location.replace("#next-section");
-    let loading = false;
     console.log({ city, propertyType, offerType });
     simplyRetsSearch({ city, propertyType, offerType });
   };
