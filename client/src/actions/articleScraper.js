@@ -41,8 +41,7 @@ export const scrapeArticles = () => async dispatch => {
     $("span.entry-thumb").each(function(i, element) {
       if (imgLinks.length < 3) {
         imgLinks.push(
-          $(this).css(["background-Image"])
-
+          $(this).css(["background-image"])
           // .children("a")
           // .attr("href")
         );
