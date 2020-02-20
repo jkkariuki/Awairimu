@@ -17,7 +17,9 @@ const ScrapedArticles = ({ scrapeArticles, scrapedArticles, loading }) => {
   // console.log(titles);
 
   return (
-    <div style={{ height: "450px" }} className=''>
+    <div className='container'>
+      <h3 id='scrapedHeading'>NJ Living</h3>
+
       <div className='row articlesRow'>
         {loading || scrapedArticles === null ? (
           <Spinner />

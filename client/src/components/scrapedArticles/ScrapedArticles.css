@@ -11,10 +11,16 @@
 .articlesRow {
   height: 235px;
   overflow: auto;
-  margin: 5px auto;
+  margin: 75px auto;
 }
 
 .btn {
   color: white;
   z-index: 1;
+}
+
+#scrapedHeading {
+  text-align: center;
+  color: black;
+  margin: 25px auto;
 }

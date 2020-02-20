@@ -23,66 +23,68 @@ const SearchForm = ({ simplyRetsSearch, loading }) => {
     simplyRetsSearch({ city, propertyType, offerType });
   };
   return (
-    <form onSubmit={onSubmit} className='form-search'>
-      <h3>Find Your Next Home</h3>
-      <div
-        className='row  align-items-end'
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <div className='col-md-5'>
-          <label>Offer Type</label>
-          <div className='select-wrap'>
-            <span className='icon icon-arrow_drop_down'></span>
-            <select
-              name='offerType'
-              onChange={e => onChange(e)}
-              id='offer-types'
-              className='form-control d-block rounded-0'
-              value={offerType}
-              required
+    <div className='container'>
+      <form onSubmit={onSubmit} className='form-search'>
+        <h3>Find Your Next Home</h3>
+        <div
+          className='row  align-items-end'
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <div className='col-md-5'>
+            <label>Offer Type</label>
+            <div className='select-wrap'>
+              <span className='icon icon-arrow_drop_down'></span>
+              <select
+                name='offerType'
+                onChange={e => onChange(e)}
+                id='offer-types'
+                className='form-control d-block rounded-0'
+                value={offerType}
+                required
+              >
+                <option value=''>Choose here</option>
+                <option value='residential'>For Sale</option>
+                <option value='rental'>For Rent</option>
+              </select>
+            </div>
+          </div>
+          <div className='col-md-5'>
+            <label>Select City</label>
+            <div className='select-wrap'>
+              <span className='icon icon-arrow_drop_down'></span>
+              <select
+                name='city'
+                onChange={e => onChange(e)}
+                id='select-city'
+                className='form-control d-block rounded-0'
+                value={city}
+                required
+              >
+                <option value=''>Choose here</option>
+                <option value='Oak Ridge'>Oak Ridge</option>
+                <option value='Katy'>Katy</option>
+                <option value='Cypress'>Cypress</option>
+                Cypress, Katy, Oak Ridge,
+                <option value='Houston'>Houston</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <button
+              type='submit'
+              className='btn btn-success text-white btn-block rounded-0'
             >
-              <option value=''>Choose here</option>
-              <option value='residential'>For Sale</option>
-              <option value='rental'>For Rent</option>
-            </select>
+              {" "}
+              <i className='fas fa-search'></i>
+            </button>
           </div>
         </div>
-        <div className='col-md-5'>
-          <label>Select City</label>
-          <div className='select-wrap'>
-            <span className='icon icon-arrow_drop_down'></span>
-            <select
-              name='city'
-              onChange={e => onChange(e)}
-              id='select-city'
-              className='form-control d-block rounded-0'
-              value={city}
-              required
-            >
-              <option value=''>Choose here</option>
-              <option value='Oak Ridge'>Oak Ridge</option>
-              <option value='Katy'>Katy</option>
-              <option value='Cypress'>Cypress</option>
-              Cypress, Katy, Oak Ridge,
-              <option value='Houston'>Houston</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <button
-            type='submit'
-            className='btn btn-success text-white btn-block rounded-0'
-          >
-            {" "}
-            <i className='fas fa-search'></i>
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

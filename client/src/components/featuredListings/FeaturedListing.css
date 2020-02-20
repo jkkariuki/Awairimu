@@ -1,0 +1,10 @@
+#featuredHeading {
+  text-align: center;
+  margin: 75px auto;
+  color: black;
+}
+
+#listingImg {
+  height: 260px;
+  width: 350px;
+}

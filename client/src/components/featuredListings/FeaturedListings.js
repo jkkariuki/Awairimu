@@ -7,6 +7,7 @@ import Spinner from "../layout/spinner/spinner";
 import { getAllRetsListings } from "../../actions/simplyRets";
 import { simplyRetsSearch } from "../../actions/simplyRets";
 import Pagination from "../layout/Pagination";
+import "./FeaturedListing.css";
 
 const FeaturedListings = ({
   getAllRetsListings,
@@ -40,7 +41,7 @@ const FeaturedListings = ({
       <div className='container'>
         <div className='row'>
           <div className='col-md-12'>
-            <h2 className='heading' data-aos='fade-up'>
+            <h2 id='featuredHeading' className='heading' data-aos='fade-up'>
               Popular Properties
             </h2>
           </div>
@@ -57,7 +58,7 @@ const FeaturedListings = ({
               >
                 <Link to={`/listing/${listing.mlsId}`}>
                   <img
-                    style={{ height: "260px", width: "350px" }}
+                    id='listingImg'
                     src={listing.photos[0]}
                     alt='placeholder'
                     className='img-fluid rounded'

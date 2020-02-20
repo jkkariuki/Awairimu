@@ -16,20 +16,17 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 //
 const CustomerReviews = () => {
   return (
-    <div
-      style={{
-        height: "300px",
-        margin: "auto"
-      }}
-      className='container'
-    >
-      <h3 id='reviewsHeader'>Satisfied Customers!</h3>
-      <CarouselProvider
+    <div id='reviewsContainer' className='container'>
+      <div
         style={{
-          height: "300px",
-          textAlign: "center",
-          marginBottom: "40px"
+          margin: "75px auto"
         }}
+      >
+        <h3 id='reviewsHeader'>Satisfied Customers!</h3>
+      </div>
+
+      <CarouselProvider
+        id='carouselProvider'
         naturalSlideWidth={100}
         naturalSlideHeight={10}
         totalSlides={3}
@@ -104,7 +101,7 @@ const CustomerReviews = () => {
             </div>
           </Slide>
         </Slider>
-        <div>
+        <div id='reviewSlidebtn'>
           {" "}
           <ButtonBack>
             <span style={{}}>&#8592;</span>{" "}

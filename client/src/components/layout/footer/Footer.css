@@ -2,3 +2,36 @@
   background: #343a40 !important;
   color: white;
 }
+
+.footerLogos {
+  height: 25px;
+  width: 25px;
+  /* display: inline-block; */
+  margin: 5px 5px;
+}
+
+.fab {
+  margin: 5px 5px;
+  color: white;
+}
+#realtorLogolg {
+  height: 50px;
+  width: 50px;
+  /* display: inline-block; */
+}
+
+#realtorStmt {
+  /* display: inline-block; */
+  /* width: 50%; */
+  width: 100%;
+  margin: 5px auto;
+}
+
+#rmxLogo {
+  height: 100px;
+  margin: 50px auto;
+}
+
+.footerCol {
+  margin-top: 20px;
+}

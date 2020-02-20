@@ -9,7 +9,7 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
       <Link className='navbar-brand' to='/'>
-        Alice Kariuki, Your Agent
+        LetsGoHomes
       </Link>
 
       <button
@@ -50,7 +50,7 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
       <Link className='navbar-brand' to='/'>
-        Alice Kariuki, Your Agent
+        LetsGoHomes
       </Link>
 
       <button

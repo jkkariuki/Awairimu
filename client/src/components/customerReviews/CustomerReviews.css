@@ -1,10 +1,9 @@
 body {
   color: black;
 }
+
 #reviewsContainer {
-  width: 300px;
-  height: 300px;
-  display: flex;
+  /* display: flex; */
   overflow-x: auto;
 }
 
@@ -26,4 +25,15 @@ body {
 
 .horizontalSlider___281Ls {
   height: 200px;
+}
+
+#reviewSlidebtn {
+  margin: 25px auto;
+  text-align: center;
+}
+
+#carouselProvider {
+  height: 300px;
+  text-align: "center";
+  margin-bottom: 40px;
 }
