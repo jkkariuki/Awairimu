@@ -4,18 +4,17 @@ import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
 import { getListingById } from "../../actions/simplyRets";
 import { saveListing } from "../../actions/profile";
-
+import ContactForm from "../layout/contactForm/ContactForm";
 import Alert from "../layout/Alert";
 import "./Listing.css";
 import logo from "../../img/logo.jpg";
 import { setAlert } from "../../actions/alert";
-import { listingMsg } from "../../actions/profile";
+import { contactMsg } from "../../actions/profile";
 
 const Listing = ({
   getListingById,
   listingMsg,
   saveListing,
-  setAlert,
   listing: { listing, loading },
   match,
   auth
@@ -47,7 +46,7 @@ const Listing = ({
 
     listingMsg(listing, { formData });
     setFormData("");
-    setAlert("Success!", "success");
+    // setAlert("Success!", "success");
   };
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -154,39 +153,10 @@ const Listing = ({
                 <Alert />
               </div>
 
-              <div className='col-lg-3 offset-lg-1 col-md-4 col-sm-5'>
-                <div className='card'>
-                  <img
-                    className='card-img-top'
-                    src={logo}
-                    alt='placeholder'
-                    style={{ width: "100%" }}
-                  />
-                  <div className='card-body'>
-                    <p style={{ color: "black" }} className='card-title'>
-                      City Group
-                    </p>
-                    <p>Remax Realtors</p>
-                    <form onSubmit={e => onSubmit(e)}>
-                      <div className='form-group'>
-                        <textarea
-                          className='form-control input-sm'
-                          name='formData'
-                          value={formData}
-                          rows='2'
-                          id='comment'
-                          placeholder='Message me about this listing'
-                          onChange={e => onChange(e)}
-                          required
-                        ></textarea>
-                      </div>
-                      <button type='submit' className='btn btn-primary'>
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
+              <ContactForm
+                listing={listing}
+                placeHolder={"Have a question about this listing?"}
+              />
             </div>
           </div>
         </Fragment>
@@ -215,5 +185,5 @@ export default connect(mapStateToProps, {
   setAlert,
   getListingById,
   saveListing,
-  listingMsg
+  contactMsg
 })(Listing);

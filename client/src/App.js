@@ -6,6 +6,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Listing from "./components/listing/Listing";
 import About from "./components/about/About";
+import BlogSpot from "./components/blogspot/BlogSpot";
 import Footer from "./components/layout/footer/Footer";
 import Alert from "./components/layout/Alert";
 import NotFound from "./components/layout/NotFound";
@@ -40,6 +41,7 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/listing/:id' component={Listing} />
+            <Route exact path='/blog' component={BlogSpot} />
             <PrivateRoute exact path='/saved' component={SavedListings} />
             <Route component={NotFound} />
           </Switch>

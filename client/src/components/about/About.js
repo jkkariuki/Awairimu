@@ -2,11 +2,15 @@ import React from "react";
 import logo from "../../img/logo.jpg";
 import "./About.css";
 import agentphoto1 from "../../img/agentphoto1.jpg";
+import ContactForm from "../layout/contactForm/ContactForm";
+import { setAlert } from "../../actions/alert";
+import { connect } from "react-redux";
 
-const About = () => {
+const About = ({ setAlert }) => {
+  const listing = {};
   return (
     <div>
-      <div className='jumbotron jumbotron-fluid'>
+      <div className='jumbotron jumbotron-fluid about-jumbo'>
         <div class='container'>
           <h1 class='display-4'>About</h1>
         </div>
@@ -24,7 +28,6 @@ const About = () => {
               aspernatur aut odit aut fugit, sed quia consequuntur magni
             </p>
           </div>
-
           <div className='col-lg-4 col-md-4 col-sm-12 about-item'>
             <h2 className='sectionHeaders'>Philosophy</h2>
             <p>
@@ -35,37 +38,7 @@ const About = () => {
               aspernatur aut odit aut fugit, sed quia consequuntur magni
             </p>
           </div>
-
-          <div
-            style={{ marginTop: "20px" }}
-            className='col-lg-4 col-md-4 col-sm-12 center-sm'
-          >
-            {" "}
-            <div style={{ width: "200px", margin: "0 auto" }} className='card'>
-              <img className='card-img-top' src={logo} alt='logo' />
-              <div className='card-body'>
-                <p style={{ color: "black" }} className='card-title'>
-                  City Group
-                </p>
-                <p>Remax Realtors</p>
-                <form>
-                  <div className='form-group'>
-                    <textarea
-                      className='form-control input-sm'
-                      name='formData'
-                      rows='2'
-                      id='comment'
-                      placeholder='Contact Me'
-                      // required
-                    ></textarea>
-                  </div>
-                  <button type='submit' className='btn btn-primary'>
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+          <ContactForm listing={listing} placeHolder={"Send us a message"} />{" "}
         </div>
 
         <h1 id='ourAgents'>Our Agents</h1>
@@ -107,4 +80,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default connect(null, { setAlert })(About);

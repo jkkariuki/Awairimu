@@ -13,10 +13,7 @@ const Footer = () => {
           <div style={{ marginRight: "0px" }} className='row'>
             <div className='col-lg-4 col-md-4 footerCol'>
               <h6 class='text-uppercase font-weight-bold'>Contact</h6>
-              {/* <hr
-                class='deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto'
-                style={{ width: "60px" }}
-              /> */}
+
               <p>
                 <i class='fas fa-home  '></i> Jersey City, NJ 07307, US
               </p>

@@ -69,6 +69,11 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               About
             </Link>
           </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/blog'>
+              Blog
+            </Link>
+          </li>
         </ul>
       </div>
 

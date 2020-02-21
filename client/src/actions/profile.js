@@ -63,7 +63,7 @@ export const removeListing = id => async dispatch => {
   }
 };
 
-export const listingMsg = (listing, formData) => async dispatch => {
+export const contactMsg = (listing, formData) => async dispatch => {
   try {
     const config = {
       headers: {

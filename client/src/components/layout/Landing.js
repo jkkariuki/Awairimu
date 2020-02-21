@@ -8,20 +8,7 @@ import "./Landing.css";
 const Landing = () => {
   return (
     <div>
-      <div
-        id='landingJumbo'
-        className='jumbotron jumbotron-fluid'
-        style={
-          {
-            // backgroundImage: `url(${Background})`,
-            // backgroundSize: "cover",
-            // backgroundPosition: "center center",
-            // position: "relative",
-            // height: "700px"
-            // marginBottom: "0"
-          }
-        }
-      ></div>
+      <div className='jumbotron jumbotron-fluid landing-jumbo'></div>
 
       <SearchForm />
       <FeaturedListings />

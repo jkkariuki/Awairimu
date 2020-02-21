@@ -1,0 +1,29 @@
+.blog-jumbo {
+  background-image: url("../../img/blogjumbo.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: -2;
+  padding: 6rem 4rem;
+  height: 250px;
+}
+
+.articleImgs {
+  height: 300px;
+  width: 80%;
+  margin: 15px auto;
+}
+
+.articleHeaders {
+  color: black;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+#articlesRow {
+  text-align: center;
+}
+
+.articleItem {
+  margin: 50px auto;
+}
