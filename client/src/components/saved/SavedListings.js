@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
-
+import "./SavedListings.css";
 import { getCurrentUser, removeListing } from "../../actions/profile";
 
 const SavedListings = ({
@@ -26,6 +26,11 @@ const SavedListings = ({
         <Spinner />
       ) : (
         <Fragment>
+          <div className='jumbotron jumbotron-fluid faves-jumbo'>
+            <div class='container'>
+              <h3 class='display-4'>Saved Listings</h3>
+            </div>
+          </div>
           <div class='container'>
             <h2 style={{ color: "black" }}> Hi {user.firstName} </h2>
             <h3 style={{ color: "black" }}> Check out your Saved Listings</h3>

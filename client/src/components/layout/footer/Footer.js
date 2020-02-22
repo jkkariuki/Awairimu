@@ -12,7 +12,7 @@ const Footer = () => {
         <div className='footer-copyright text-center py-3' id='footer'>
           <div style={{ marginRight: "0px" }} className='row'>
             <div className='col-lg-4 col-md-4 footerCol'>
-              <h6 class='text-uppercase font-weight-bold'>Contact</h6>
+              <h7 class='text-uppercase font-weight-bold'>Contact</h7>
 
               <p>
                 <i class='fas fa-home  '></i> Jersey City, NJ 07307, US

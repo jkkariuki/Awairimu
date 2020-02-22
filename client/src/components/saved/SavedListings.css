@@ -1,0 +1,10 @@
+.faves-jumbo {
+  background-image: url("../../img/favesjumbo.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  z-index: -2;
+  padding: 6rem 4rem;
+  height: 350px;
+}

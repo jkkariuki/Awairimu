@@ -28,6 +28,16 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               About
             </Link>
           </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/blog'>
+              Blog
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/testimonials'>
+              Testimonials
+            </Link>
+          </li>
 
           <li className='nav-item'>
             <Link className='nav-link' to='/saved'>
@@ -72,6 +82,11 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <li className='nav-item'>
             <Link className='nav-link' to='/blog'>
               Blog
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/testimonials'>
+              Testimonials
             </Link>
           </li>
         </ul>

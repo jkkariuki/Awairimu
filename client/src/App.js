@@ -6,6 +6,10 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Listing from "./components/listing/Listing";
 import About from "./components/about/About";
+import Article1 from "./components/blogspot/Article1";
+import Article2 from "./components/blogspot/Article2";
+import Article3 from "./components/blogspot/Article3";
+import Article4 from "./components/blogspot/Article4";
 import BlogSpot from "./components/blogspot/BlogSpot";
 import Footer from "./components/layout/footer/Footer";
 import Alert from "./components/layout/Alert";
@@ -18,6 +22,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
+import Testimonials from "./components/testimonials/Testimonials";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -41,7 +46,13 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/listing/:id' component={Listing} />
+            <Route exact path='/blog/article1' component={Article1} />
+            <Route exact path='/blog/article2' component={Article2} />
+            <Route exact path='/blog/article3' component={Article3} />
+            <Route exact path='/blog/article4' component={Article4} />
             <Route exact path='/blog' component={BlogSpot} />
+            <Route exact path='/testimonials' component={Testimonials} />
+
             <PrivateRoute exact path='/saved' component={SavedListings} />
             <Route component={NotFound} />
           </Switch>

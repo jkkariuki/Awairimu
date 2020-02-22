@@ -1,0 +1,25 @@
+.reviews-jumbo {
+  background-image: url("../../img/reviewsjumbo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  z-index: -2;
+  padding: 6rem 4rem;
+  height: 350px;
+}
+.review {
+  width: 80%;
+  text-align: center;
+  border-style: inset;
+  border-bottom: black;
+  margin-bottom: 70px;
+}
+
+.reviewDiv {
+  margin: 30px auto;
+}
+.reviewerName {
+  text-align: right;
+  width: 80%;
+}
