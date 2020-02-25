@@ -175,18 +175,19 @@ router.post(
           subject: "New Message from Contact Form",
           text: message
         };
+
+        transporter.sendMail(mailOptions, (err, data) => {
+          if (err) {
+            res.json({
+              msg: "fail"
+            });
+          } else {
+            res.json({
+              msg: "success"
+            });
+          }
+        });
       };
-      transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-          res.json({
-            msg: "fail"
-          });
-        } else {
-          res.json({
-            msg: "success"
-          });
-        }
-      });
 
       // const newMessage = {
       //   userId: user._id,
