@@ -8,6 +8,7 @@ const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
+require("dotenv").config();
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
@@ -168,7 +169,7 @@ router.post(
       let message = JSON.stringify(req.body.formData);
       let content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-      const sendMail = (email, message, cb) => {
+      const sendMail = (email, message) => {
         const mailOptions = {
           from: email,
           to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
