@@ -140,8 +140,8 @@ router.post(
         service: "gmail",
         host: "smtp.gmail.com",
         auth: {
-          user: config.get("USER"),
-          pass: config.get("PASS")
+          // user: config.get("USER"),
+          // pass: config.get("PASS")
         }
       };
 
