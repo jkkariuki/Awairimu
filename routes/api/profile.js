@@ -1,4 +1,4 @@
-require("dotenv").config("C:UsersOwnerDesktopAWairimu.env");
+require("dotenv").config({ path: __dirname + "/.env" });
 
 const express = require("express");
 const request = require("request");
@@ -142,55 +142,57 @@ router.post(
       let adminUser = await AdminUser.findOne({ email: "akariuki@mail.com" });
 
       // nodemailer
-      const transport = {
-        service: "gmail",
-        host: "smtp.gmail.com",
-        auth: {
-          user: process.env.USER,
-          pass: process.env.PASS
-        }
-      };
-
-      // const auth = {
+      // const transport = {
+      //   service: "gmail",
+      //   host: "smtp.gmail.com",
       //   auth: {
-      //     api_key: process.env.API_KEY,
-      //     domain: process.env.DOMAIN
+      //     user: process.env.USER,
+      //     pass: process.env.PASS
       //   }
       // };
 
-      var transporter = nodemailer.createTransport(transport);
-
-      transporter.verify((error, success) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Server is ready to take messages");
+      const auth = {
+        auth: {
+          api_key: "6027c18391c71b347ed05694a196dcf4-9dda225e-c068364b",
+          domain: "sandbox2f2d94275a27469bb9d811d732674779.mailgun.org"
         }
-      });
+      };
+
+      var transporter = nodemailer.createTransport(mailGun(auth));
+
+      // transporter.verify((error, success) => {
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     console.log("Server is ready to take messages");
+      //   }
+      // });
 
       let name = user.firstName + " " + user.lastName;
       let email = user.email;
-      let message = JSON.stringify(req.body.formData);
+      let text = JSON.stringify(req.body.formData);
       let content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-      const mailOptions = {
-        from: email,
-        to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
-        subject: "New Message from Contact Form",
-        text: message
-      };
+      const sendMail = (email, text) => {
+        const mailOptions = {
+          from: email,
+          to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
+          subject: "New Message from Contact Form",
+          text
+        };
 
-      transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-          res.json({
-            msg: "fail"
-          });
-        } else {
-          res.json({
-            msg: "success"
-          });
-        }
-      });
+        transporter.sendMail(mailOptions, (err, data) => {
+          if (err) {
+            res.json({
+              msg: "fail"
+            });
+          } else {
+            res.json({
+              msg: "success"
+            });
+          }
+        });
+      };
 
       // const newMessage = {
       //   userId: user._id,
