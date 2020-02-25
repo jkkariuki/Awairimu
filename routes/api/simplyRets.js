@@ -31,7 +31,7 @@ router.get("/listing/:id", async (req, res) => {
       if (response.statusCode !== 200) {
         return res.status(400).json({ msg: "No Github profile found" });
       }
-      console.log(JSON.parse(body));
+      // console.log(JSON.parse(body));
       res.json(JSON.parse(body));
     });
   } catch (err) {

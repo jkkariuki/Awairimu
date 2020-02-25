@@ -7,6 +7,7 @@ const auth = require("../../middleware/auth");
 const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 var nodemailer = require("nodemailer");
+require("dotenv").config();
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
@@ -140,8 +141,8 @@ router.post(
         service: "gmail",
         host: "smtp.gmail.com",
         auth: {
-          // user: config.get("USER"),
-          // pass: config.get("PASS")
+          user: process.env.USER,
+          pass: process.env.PASS
         }
       };
 

@@ -77,6 +77,8 @@ export const contactMsg = (listing, formData) => async dispatch => {
       config
     });
 
+    console.log(res.data);
+
     dispatch({
       type: LISTING_MSG,
       payload: res.data
