@@ -142,7 +142,7 @@ router.post(
         host: "smtp.gmail.com",
         auth: {
           user: process.env.USER,
-          pass: process.env.PASS
+          password: process.env.PASS
         }
       };
 
