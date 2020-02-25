@@ -10,7 +10,7 @@ const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
-const sendMail = require("./mail");
+const sendMail = require("../../mail");
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
