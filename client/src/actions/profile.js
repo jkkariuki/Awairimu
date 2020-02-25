@@ -41,7 +41,6 @@ export const saveListing = listing => async dispatch => {
       type: SAVE_LISTING,
       payload: res.data
     });
-
     dispatch(setAlert("Listing Saved", "success"));
   } catch (err) {
     console.log(err);

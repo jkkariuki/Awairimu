@@ -66,7 +66,7 @@ const ContactForm = ({
 };
 
 ContactForm.propTypes = {
-  listingMsg: PropTypes.func.isRequired,
+  contactMsg: PropTypes.func.isRequired,
   listing: PropTypes.object,
   placeHolder: PropTypes.string.isRequired
 };

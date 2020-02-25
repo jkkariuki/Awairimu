@@ -13,9 +13,10 @@ import { contactMsg } from "../../actions/profile";
 
 const Listing = ({
   getListingById,
+  saveListing,
   setAlert,
   listingMsg,
-  saveListing,
+  contactMsg,
   listing: { listing, loading },
   match,
   auth
@@ -29,6 +30,7 @@ const Listing = ({
   }, [getListingById, match.params.id]);
 
   const checkAuth = () => {
+    console.log("helllooo");
     if (auth.isAuthenticated) {
       saveListing(listing);
     } else {
@@ -41,7 +43,7 @@ const Listing = ({
   const onSubmit = async e => {
     e.preventDefault();
 
-    listingMsg(listing, { formData });
+    contactMsg(listing, { formData });
     setFormData("");
     // setAlert("Success!", "success");
   };
@@ -164,7 +166,7 @@ const Listing = ({
 
 Listing.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  listingMsg: PropTypes.func.isRequired,
+  contactMsg: PropTypes.func.isRequired,
   getListingById: PropTypes.func.isRequired,
   saveListing: PropTypes.func.isRequired,
   listing: PropTypes.object.isRequired,

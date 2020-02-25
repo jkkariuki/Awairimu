@@ -62,9 +62,9 @@ const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
       <Link className='navbar-brand' to='/'>
+        <img className='card-img-top navLogo' src={logo} alt='placeholder' />
         LetsGoHomes
       </Link>
-
       <button
         className='navbar-toggler'
         type='button'
