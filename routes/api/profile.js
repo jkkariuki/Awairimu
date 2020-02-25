@@ -6,7 +6,8 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+const mailGun = require("nodemailer-mailgun-transport");
 require("dotenv").config();
 
 //@route    GET api/profile/myprofile
@@ -137,37 +138,46 @@ router.post(
       let adminUser = await AdminUser.findOne({ email: "akariuki@mail.com" });
 
       //nodemailer
-      var transport = {
-        service: "gmail",
-        host: "smtp.gmail.com",
+      // const transport = {
+      //   service: "gmail",
+      //   host: "smtp.gmail.com",
+      //   auth: {
+      //     user: process.env.USER,
+      //     pass: process.env.PASS
+      //   }
+      // };
+
+      const auth = {
         auth: {
-          user: process.env.USER,
-          pass: process.env.PASS
+          api_key: process.env.API_KEY,
+          domain: process.env.DOMAIN
         }
       };
 
-      var transporter = nodemailer.createTransport(transport);
+      const transporter = nodemailer.createTransport(mailGun(auth));
 
-      transporter.verify((error, success) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Server is ready to take messages");
-        }
-      });
+      // transporter.verify((error, success) => {
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     console.log("Server is ready to take messages");
+      //   }
+      // });
 
       let name = user.firstName + " " + user.lastName;
       let email = user.email;
       let message = JSON.stringify(req.body.formData);
       let content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-      var mail = {
-        from: name,
-        to: "jkkariuki15@gmail.com", //Change to email address that you want to receive messages on
-        subject: "New Message from Contact Form",
-        text: content
+      const sendMail = (email, message, cb) => {
+        const mailOptions = {
+          from: email,
+          to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
+          subject: "New Message from Contact Form",
+          text: message
+        };
       };
-      transporter.sendMail(mail, (err, data) => {
+      transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
           res.json({
             msg: "fail"
