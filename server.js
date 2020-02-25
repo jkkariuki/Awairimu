@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config("C:UsersOwnerDesktopAWairimu.env");
 
 const express = require("express");
 const connectDB = require("./config/db");

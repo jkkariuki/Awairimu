@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config("C:UsersOwnerDesktopAWairimu.env");
 
 const express = require("express");
 const request = require("request");
