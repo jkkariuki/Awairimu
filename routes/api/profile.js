@@ -6,6 +6,7 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
+var nodemailer = require("nodemailer");
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
@@ -134,20 +135,63 @@ router.post(
 
       let adminUser = await AdminUser.findOne({ email: "akariuki@mail.com" });
 
-      const newMessage = {
-        userId: user._id,
-        name: user.firstName + user.lastName,
-        email: user.email,
-        msg: JSON.stringify(req.body.formData),
-        listing: JSON.stringify(req.body.listing)
+      //nodemailer
+      var transport = {
+        service: "gmail",
+        host: "smtp.gmail.com",
+        auth: {
+          user: config.get("USER"),
+          pass: config.get("PASS")
+        }
       };
 
-      adminUser.messages.unshift(newMessage);
+      var transporter = nodemailer.createTransport(transport);
 
-      await adminUser.save();
-      await user.save();
+      transporter.verify((error, success) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Server is ready to take messages");
+        }
+      });
 
-      res.json(user);
+      let name = user.firstName + " " + user.lastName;
+      let email = user.email;
+      let message = JSON.stringify(req.body.formData);
+      let content = `name: ${name} \n email: ${email} \n message: ${message} `;
+
+      var mail = {
+        from: name,
+        to: "jkkariuki15@gmail.com", //Change to email address that you want to receive messages on
+        subject: "New Message from Contact Form",
+        text: content
+      };
+      transporter.sendMail(mail, (err, data) => {
+        if (err) {
+          res.json({
+            msg: "fail"
+          });
+        } else {
+          res.json({
+            msg: "success"
+          });
+        }
+      });
+
+      // const newMessage = {
+      //   userId: user._id,
+      //   name: user.firstName + user.lastName,
+      //   email: user.email,
+      //   msg: JSON.stringify(req.body.formData),
+      //   listing: JSON.stringify(req.body.listing)
+      // };
+
+      // adminUser.messages.unshift(newMessage);
+
+      // await adminUser.save();
+      // await user.save();
+
+      // res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
