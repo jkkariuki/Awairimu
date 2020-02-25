@@ -62,7 +62,8 @@ router.post("/favorites", auth, async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .json({ msg: "There is no  profile for this user" });
+
+        .json({ errors: [{ msg: "Please log in to save" }] });
     }
 
     res.json(user);

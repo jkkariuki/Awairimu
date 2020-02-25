@@ -71,3 +71,16 @@ form .error {
 #second {
   display: none;
 }
+
+.formHeader {
+  color: black;
+}
+
+.formLogo {
+  height: 100px;
+  width: 100px;
+}
+
+.authContainer {
+  margin: 60px auto;
+}

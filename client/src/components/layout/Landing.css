@@ -16,3 +16,9 @@
   padding: 6rem 4rem;
   height: 550px;
 }
+
+.navLogo {
+  height: 50px;
+  width: 50px;
+  margin: auto 10px;
+}

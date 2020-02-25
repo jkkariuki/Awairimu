@@ -12,7 +12,9 @@
   width: 80%;
   text-align: center;
   border-style: inset;
-  border-bottom: black;
+  box-shadow: 5px 10px;
+  padding: 10px;
+  /* border-bottom: black; */
   margin-bottom: 70px;
 }
 
@@ -22,4 +24,9 @@
 .reviewerName {
   text-align: right;
   width: 80%;
+}
+
+#testimonialsHeader {
+  color: black;
+  margin-bottom: 20px;
 }

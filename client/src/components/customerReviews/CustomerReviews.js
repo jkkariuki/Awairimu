@@ -22,7 +22,7 @@ const CustomerReviews = () => {
           margin: "75px auto"
         }}
       >
-        <h3 id='reviewsHeader'>Satisfied Customers!</h3>
+        <h3 id='carouselHeader'>Satisfied Customers!</h3>
       </div>
 
       <CarouselProvider

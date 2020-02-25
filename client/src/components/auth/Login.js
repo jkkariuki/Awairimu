@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setAlert } from "../../actions/alert";
 import { login } from "../../actions/auth";
+import logo from "../../img/logo.jpeg";
 
 import "./form.css";
 
@@ -22,7 +23,6 @@ const Login = ({ login, isAuthenticated }) => {
     e.preventDefault();
     login({ email, password });
 
-    console.log("SUCCESS");
     console.log(email, password);
   };
 
@@ -31,14 +31,19 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <div className='container authContainer'>
       <div className='row'>
         <div className='col-md-5 mx-auto'>
           <div id='first'>
             <div className='myform form '>
               <div className='logo mb-3'>
                 <div className='col-md-12 text-center'>
-                  <h1>Login</h1>
+                  <h1 className='formHeader'>Login</h1>
+                  <img
+                    className='card-img-top formLogo'
+                    src={logo}
+                    alt='placeholder'
+                  />
                 </div>
               </div>
               <form onSubmit={e => onSubmit(e)}>
@@ -103,7 +108,7 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

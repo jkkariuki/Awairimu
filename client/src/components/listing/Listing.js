@@ -13,6 +13,7 @@ import { contactMsg } from "../../actions/profile";
 
 const Listing = ({
   getListingById,
+  setAlert,
   listingMsg,
   saveListing,
   listing: { listing, loading },
@@ -28,14 +29,10 @@ const Listing = ({
   }, [getListingById, match.params.id]);
 
   const checkAuth = () => {
-    console.log(auth.isAuthenticated);
-    if (auth.isAuthenticated === "false") {
-      setAlert("Please Login/Register to save listings!", "danger");
-    }
     if (auth.isAuthenticated) {
       saveListing(listing);
     } else {
-      setAlert("Login to Save!", "danger");
+      setAlert("Please Login/Register to save listings!", "danger");
     }
   };
 
@@ -149,8 +146,8 @@ const Listing = ({
                       <i className='far fa-heart'></i>
                     </span>
                   </button>
+                  <Alert />
                 </p>
-                <Alert />
               </div>
 
               <ContactForm

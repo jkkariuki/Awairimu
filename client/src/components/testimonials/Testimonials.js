@@ -16,6 +16,7 @@ const Testimonials = props => {
       <div className='container'>
         <div className='row'>
           <div className='col-lg-8 reviewDiv'>
+            <h2 id='testimonialsHeader'>Here's what they are saying...</h2>
             <p className='review'>
               <em>
                 "Sed ut perspiciatis unde omnis iste natus error sit voluptatem

@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import logo from "../../img/logo.jpeg";
 
 const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <nav className='navbar navbar-expand-md bg-dark navbar-dark'>
       <Link className='navbar-brand' to='/'>
+        <img className='card-img-top navLogo' src={logo} alt='placeholder' />
         LetsGoHomes
       </Link>
 

@@ -44,6 +44,7 @@ export const saveListing = listing => async dispatch => {
 
     dispatch(setAlert("Listing Saved", "success"));
   } catch (err) {
+    console.log(err);
     dispatch(setAlert(err.response.data.msg, "danger"));
   }
 };
