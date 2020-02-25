@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "/.env" });
+// require("dotenv").config({ path: __dirname + "/.env" });
 
 const express = require("express");
 const request = require("request");
@@ -10,6 +10,7 @@ const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
+const sendMail = require("./mail");
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
@@ -132,9 +133,6 @@ router.post(
     }
 
     try {
-      console.log(process.env.USER);
-      console.log(process.env.PASS);
-
       const user = await Lead.findOne({
         _id: req.user.id
       }).select("-password");
@@ -151,14 +149,14 @@ router.post(
       //   }
       // };
 
-      const auth = {
-        auth: {
-          api_key: "6027c18391c71b347ed05694a196dcf4-9dda225e-c068364b",
-          domain: "sandbox2f2d94275a27469bb9d811d732674779.mailgun.org"
-        }
-      };
+      // const auth = {
+      //   auth: {
+      //     api_key: "6027c18391c71b347ed05694a196dcf4-9dda225e-c068364b",
+      //     domain: "sandbox2f2d94275a27469bb9d811d732674779.mailgun.org"
+      //   }
+      // };
 
-      var transporter = nodemailer.createTransport(mailGun(auth));
+      // var transporter = nodemailer.createTransport(mailGun(auth));
 
       // transporter.verify((error, success) => {
       //   if (error) {
@@ -168,31 +166,39 @@ router.post(
       //   }
       // });
 
-      let name = user.firstName + " " + user.lastName;
+      // let content = `name: ${name} \n email: ${email} \n message: ${text} `;
       let email = user.email;
       let text = JSON.stringify(req.body.formData);
-      let content = `name: ${name} \n email: ${email} \n message: ${message} `;
 
-      const sendMail = (email, text) => {
-        const mailOptions = {
-          from: email,
-          to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
-          subject: "New Message from Contact Form",
-          text
-        };
+      sendMail(email, text, (err, data) => {
+        if (err) {
+          console.log("Error: ", err);
+          return res
+            .status(500)
+            .json({ message: err.message || "Internal Error" });
+        }
+        console.log("Email sent!");
+        return res.json({ message: "Email Sent" });
 
-        transporter.sendMail(mailOptions, (err, data) => {
-          if (err) {
-            res.json({
-              msg: "fail"
-            });
-          } else {
-            res.json({
-              msg: "success"
-            });
-          }
-        });
-      };
+        // const mailOptions = {
+        //   from: email,
+        //   to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
+        //   subject: "New Message from Contact Form",
+        //   text
+        // };
+
+        // transporter.sendMail(mailOptions, (err, data) => {
+        //   if (err) {
+        //     res.json({
+        //       msg: "fail"
+        //     });
+        //   } else {
+        //     res.json({
+        //       msg: "success"
+        //     });
+        //   }
+        // });
+      });
 
       // const newMessage = {
       //   userId: user._id,
