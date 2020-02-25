@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const request = require("request");
 const { check, validationResult } = require("express-validator/check");
@@ -8,7 +10,6 @@ const Lead = require("../../models/Lead");
 const AdminUser = require("../../models/AdminUser");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
-require("dotenv").config();
 
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
