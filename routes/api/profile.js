@@ -131,6 +131,9 @@ router.post(
     }
 
     try {
+      console.log(process.env.USER);
+      console.log(process.env.PASS);
+
       const user = await Lead.findOne({
         _id: req.user.id
       }).select("-password");
