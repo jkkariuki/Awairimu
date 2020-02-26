@@ -7,7 +7,7 @@ console.log(JSON.stringify(apiKey));
 const domain = process.env.REACT_APP_DOMAIN;
 const auth = {
   auth: {
-    apiKey: JSON.stringify(apiKey),
+    api_key: JSON.stringify(apiKey),
     domain: JSON.stringify(domain)
   }
 };
