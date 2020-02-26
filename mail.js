@@ -1,10 +1,13 @@
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
 
+const apiKey = process.env.REACT_APP_API_KEY;
+console.log(apiKey);
+const domain = process.env.REACT_APP_DOMAIN;
 const auth = {
   auth: {
-    api_key: process.env.REACT_APP_API_KEY,
-    domain: process.env.REACT_APP_DOMAIN
+    api_key: apiKey,
+    domain: domain
   }
 };
 
