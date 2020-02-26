@@ -1,5 +1,4 @@
-require("dotenv").config();
-
+console.log(require("dotenv").config({ debug: process.env.DEBUG }));
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
