@@ -30,7 +30,6 @@ const Listing = ({
   }, [getListingById, match.params.id]);
 
   const checkAuth = () => {
-    console.log("helllooo");
     if (auth.isAuthenticated) {
       saveListing(listing);
     } else {
@@ -38,15 +37,16 @@ const Listing = ({
     }
   };
 
-  const onChange = e => setFormData(e.target.value);
+  // const onChange = e => setFormData(e.target.value);
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  // const onSubmit = async e => {
+  //   e.preventDefault();
+  //   console.log(listing + " HELLO LISTING");
 
-    contactMsg(listing, { formData });
-    setFormData("");
-    // setAlert("Success!", "success");
-  };
+  //   contactMsg(listing, { formData });
+  //   setFormData("");
+  //   // setAlert("Success!", "success");
+  // };
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -153,7 +153,7 @@ const Listing = ({
               </div>
 
               <ContactForm
-                listing={listing}
+                listingId={JSON.stringify(listing.mlsId)}
                 placeHolder={"Have a question about this listing?"}
               />
             </div>

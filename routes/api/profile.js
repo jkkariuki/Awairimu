@@ -116,11 +116,11 @@ router.put("/unfave/:id", auth, async (req, res) => {
 //@desc     Message about a listing
 //@access   Private
 router.post(
-  "/message/",
+  "/message",
   [
     auth,
     [
-      check("formData", "Message cannot be blank")
+      check("message", "Message cannot be blank")
         .not()
         .isEmpty()
     ]
@@ -131,89 +131,28 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    const { message, listingId } = req.body;
 
     try {
       const user = await Lead.findOne({
         _id: req.user.id
       }).select("-password");
 
-      let adminUser = await AdminUser.findOne({ email: "akariuki@mail.com" });
-
-      // nodemailer
-      // const transport = {
-      //   service: "gmail",
-      //   host: "smtp.gmail.com",
-      //   auth: {
-      //     user: process.env.USER,
-      //     pass: process.env.PASS
-      //   }
-      // };
-
-      // const auth = {
-      //   auth: {
-      //     api_key: "6027c18391c71b347ed05694a196dcf4-9dda225e-c068364b",
-      //     domain: "sandbox2f2d94275a27469bb9d811d732674779.mailgun.org"
-      //   }
-      // };
-
-      // var transporter = nodemailer.createTransport(mailGun(auth));
-
-      // transporter.verify((error, success) => {
-      //   if (error) {
-      //     console.log(error);
-      //   } else {
-      //     console.log("Server is ready to take messages");
-      //   }
-      // });
-
-      // let content = `name: ${name} \n email: ${email} \n message: ${text} `;
+      let content = `name: ${user.firstName} ${user.lastName} \n email: ${user.email} \n message: ${message} \n listing: ${listingId} `;
       let email = user.email;
-      let text = JSON.stringify(req.body.formData);
+      let text = content;
+      let subject = `name: ${user.firstName} ${
+        user.lastName
+      } \n listing: ${JSON.stringify(listingId)}`;
 
-      sendMail(email, text, (err, data) => {
+      sendMail(email, text, subject, (err, data) => {
         if (err) {
-          console.log("Error: ", err);
           return res
             .status(500)
             .json({ message: err.message || "Internal Error" });
         }
-        console.log("Email sent!");
-        return res.json({ message: "Email Sent" });
-
-        // const mailOptions = {
-        //   from: email,
-        //   to: "ajkariuki589@gmail.com", //Change to email address that you want to receive messages on
-        //   subject: "New Message from Contact Form",
-        //   text
-        // };
-
-        // transporter.sendMail(mailOptions, (err, data) => {
-        //   if (err) {
-        //     res.json({
-        //       msg: "fail"
-        //     });
-        //   } else {
-        //     res.json({
-        //       msg: "success"
-        //     });
-        //   }
-        // });
+        return res.json({ user, message: "Email Sent" });
       });
-
-      // const newMessage = {
-      //   userId: user._id,
-      //   name: user.firstName + user.lastName,
-      //   email: user.email,
-      //   msg: JSON.stringify(req.body.formData),
-      //   listing: JSON.stringify(req.body.listing)
-      // };
-
-      // adminUser.messages.unshift(newMessage);
-
-      // await adminUser.save();
-      // await user.save();
-
-      // res.json(user);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

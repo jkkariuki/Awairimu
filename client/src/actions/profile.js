@@ -63,34 +63,24 @@ export const removeListing = id => async dispatch => {
   }
 };
 
-export const contactMsg = (listing, formData) => async dispatch => {
+export const contactMsg = ({ listingId, message }) => async dispatch => {
   try {
     const config = {
       headers: {
         "Content-Type": "application/json"
       }
     };
+    const body = JSON.stringify({ listingId, message });
 
-    const res = await axios.post("/api/profile/message/", {
-      listing,
-      formData,
-      config
-    });
-
-    console.log(res.data);
+    const res = await axios.post("/api/profile/message", body, config);
 
     dispatch({
       type: LISTING_MSG,
-      payload: res.data
+      payload: res.data.user
     });
 
     dispatch(setAlert("Message Sent", "success"));
   } catch (err) {
     dispatch(setAlert("Please Login", "danger"));
-    // console.log("Errors Here:" + err.resonse.data);
-    // dispatch({
-    //   type: MSG_ERROR,
-    //   payload: { msg: err.response.statusText, status: err.response.status }
-    // });
   }
 };

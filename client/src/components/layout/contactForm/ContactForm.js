@@ -6,21 +6,21 @@ import Alert from "../Alert";
 import logo from "../../../img/logo.jpeg";
 import { connect } from "react-redux";
 import "./ContactForm.css";
-const ContactForm = ({
-  contactMsg,
-  placeHolder,
-  listing: { listing, loading },
-  setAlert
-}) => {
-  const [formData, setFormData] = useState("");
-  const onChange = e => setFormData(e.target.value);
+
+const ContactForm = ({ contactMsg, placeHolder, listingId, setAlert }) => {
+  const [formData, setFormData] = useState({
+    message: ""
+  });
+
+  const { message } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
-
-    contactMsg(listing, { formData });
-    setFormData("");
-    // setAlert("Success!", "success");
+    contactMsg({ listingId, message });
+    setFormData({ ...formData, message: " " });
   };
 
   return (
@@ -45,8 +45,8 @@ const ContactForm = ({
             <div className='form-group'>
               <textarea
                 className='form-control input-sm'
-                name='formData'
-                value={formData}
+                name='message'
+                value={message}
                 rows='2'
                 id='comment'
                 placeholder={placeHolder}
@@ -67,7 +67,7 @@ const ContactForm = ({
 
 ContactForm.propTypes = {
   contactMsg: PropTypes.func.isRequired,
-  listing: PropTypes.object,
+  listingId: PropTypes.string,
   placeHolder: PropTypes.string.isRequired
 };
 
