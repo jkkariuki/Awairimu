@@ -4,8 +4,8 @@ const mailGun = require("nodemailer-mailgun-transport");
 
 const auth = {
   auth: {
-    api_key: JSON.stringify(process.env.REACT_APP_API_KEY),
-    domain: JSON.stringify(process.env.REACT_APP_DOMAIN)
+    api_key: JSON.stringify(process.env.API_KEY),
+    domain: JSON.stringify(process.env.DOMAIN)
   }
 };
 
