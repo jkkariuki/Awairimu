@@ -1,11 +1,11 @@
-const config = require("config");
+// const config = require("config");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
 
 const auth = {
   auth: {
-    api_key: config.get("REACT_APP_API_KEY"),
-    domain: config.get("REACT_APP_DOMAIN")
+    api_key: JSON.stringify(process.env.REACT_APP_API_KEY),
+    domain: JSON.stringify(process.env.REACT_APP_DOMAIN)
   }
 };
 
