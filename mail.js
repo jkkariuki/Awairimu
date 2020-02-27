@@ -9,12 +9,12 @@ const auth = {
   }
 };
 
-const auth = {
-  auth: {
-    api_key: JSON.stringify(process.env.API_KEY),
-    domain: JSON.stringify(process.env.DOMAIN)
-  }
-};
+// const auth = {
+//   auth: {
+//     api_key: JSON.stringify(process.env.API_KEY),
+//     domain: JSON.stringify(process.env.DOMAIN)
+//   }
+// };
 
 const transporter = nodemailer.createTransport(mailGun(auth));
 
