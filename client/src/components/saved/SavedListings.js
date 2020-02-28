@@ -4,16 +4,18 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner/spinner";
 import "./SavedListings.css";
-import { getCurrentUser, removeListing } from "../../actions/profile";
+import { getSavedListings, removeListing } from "../../actions/profile";
 
 const SavedListings = ({
-  getCurrentUser,
-  removeListing,
-  profile: { user, loading }
+  getSavedListings,
+  favorites,
+  auth: { user, loading },
+  removeListing
+  // profile: { user, loading }
 }) => {
   useEffect(() => {
-    getCurrentUser();
-  }, [getCurrentUser]);
+    getSavedListings();
+  }, [getSavedListings]);
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -36,13 +38,16 @@ const SavedListings = ({
             <h3 style={{ color: "black" }}> Check out your Saved Listings</h3>
           </div>
 
-          {user.favorites.join("") === "" ? (
+          {favorites.join("") === "" ? (
             <div className='container'>
               {" "}
-              <h1 style={{ color: "black" }}> View Your Favorites Hear</h1>
+              <h5 style={{ color: "black", textAlign: "center" }}>
+                {" "}
+                Your Favorites Will Appear Right Here
+              </h5>
             </div>
           ) : (
-            user.favorites.map(favorite => (
+            favorites.map(favorite => (
               <div className='container'>
                 <div className='row'>
                   <div
@@ -103,17 +108,18 @@ const SavedListings = ({
 };
 
 SavedListings.propTypes = {
-  profile: PropTypes.object.isRequired,
+  // favorites: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
+  getSavedListings: PropTypes.func.isRequired,
   removeListing: PropTypes.func.isRequired,
-
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  favorites: state.profile.favorites,
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getCurrentUser, removeListing })(
+export default connect(mapStateToProps, { getSavedListings, removeListing })(
   SavedListings
 );

@@ -15,7 +15,7 @@ const sendMail = require("../../mail");
 //@route    GET api/profile/myprofile
 //@desc     load logged in user profile
 //@access   Private
-router.get("/myprofile", auth, async (req, res) => {
+router.get("/savedListings", auth, async (req, res) => {
   try {
     const user = await Lead.findOne({
       _id: req.user.id
@@ -26,7 +26,7 @@ router.get("/myprofile", auth, async (req, res) => {
         .json({ msg: "There is no  profile for this user" });
     }
 
-    res.json(user);
+    res.json(user.favorites);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -105,7 +105,7 @@ router.put("/unfave/:id", auth, async (req, res) => {
 
     await user.save();
 
-    res.json(user);
+    res.json(user.favorites);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -138,7 +138,10 @@ router.post(
         _id: req.user.id
       }).select("-password");
 
-      let content = `name: ${user.firstName} ${user.lastName} \n email: ${user.email} \n message: ${message} \n listing: ${listingId} `;
+      let content =
+        `name: ${user.firstName} ${user.lastName} \n email: ${user.email} \n message: ${message} \n listing: ` +
+        `https://calm-basin-67772.herokuapp.com/listing/` +
+        `${listingId}`;
       let email = user.email;
       let text = content;
       let subject = `name: ${user.firstName} ${

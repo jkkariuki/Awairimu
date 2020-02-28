@@ -24,8 +24,6 @@ export const scrapeArticles = () => async dispatch => {
         );
         console.log(articleTitles);
       }
-
-      //   return arr;
     });
 
     $("h3.entry-title").each(function(i, element) {
@@ -40,11 +38,7 @@ export const scrapeArticles = () => async dispatch => {
 
     $("span.entry-thumb").each(function(i, element) {
       if (imgLinks.length < 3) {
-        imgLinks.push(
-          $(this).css(["background-image"])
-          // .children("a")
-          // .attr("href")
-        );
+        imgLinks.push($(this).css(["background-image"]));
       }
     });
 
@@ -59,9 +53,6 @@ export const scrapeArticles = () => async dispatch => {
       console.log(arr);
     }
 
-    // console.log(articleTitles);
-    // console.log(articleLinks);
-    // console.log(imgLinks);
     console.log(arr);
 
     dispatch({

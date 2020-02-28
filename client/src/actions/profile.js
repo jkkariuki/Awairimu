@@ -2,20 +2,20 @@ import axios from "axios";
 import { setAlert } from "./alert";
 
 import {
-  GET_USER,
+  GET_SAVED,
   USER_ERROR,
   SAVE_LISTING,
   UPDATE_FAVES,
   LISTING_MSG
 } from "./types";
 
-export const getCurrentUser = () => async dispatch => {
+export const getSavedListings = () => async dispatch => {
   try {
-    const res = await axios.get("/api/profile/myprofile");
+    const res = await axios.get("/api/profile/savedListings");
 
     console.log(res.data);
     dispatch({
-      type: GET_USER,
+      type: GET_SAVED,
       payload: res.data
     });
   } catch (err) {
@@ -51,6 +51,7 @@ export const saveListing = listing => async dispatch => {
 //Remove Listing
 export const removeListing = id => async dispatch => {
   try {
+    console.log("Removed Id " + id);
     const res = await axios.put("/api/profile/unfave/" + id);
     console.log(res.data);
     dispatch({
