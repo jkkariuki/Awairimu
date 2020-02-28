@@ -35,8 +35,6 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Alert />
-
       <Router>
         <Fragment>
           <Navbar />

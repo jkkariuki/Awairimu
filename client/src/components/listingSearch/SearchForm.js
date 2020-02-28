@@ -14,12 +14,10 @@ const SearchForm = ({ simplyRetsSearch, loading }) => {
 
   const onChange = e =>
     setFramework({ ...framework, [e.target.name]: e.target.value });
-  console.log(framework);
 
   const onSubmit = async e => {
     e.preventDefault();
     window.location.replace("#next-section");
-    console.log({ city, propertyType, offerType });
     simplyRetsSearch({ city, propertyType, offerType });
   };
   return (

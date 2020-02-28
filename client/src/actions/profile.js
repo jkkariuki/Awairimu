@@ -28,7 +28,6 @@ export const getSavedListings = () => async dispatch => {
 
 export const saveListing = listing => async dispatch => {
   try {
-    // console.log(listing);
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -41,9 +40,11 @@ export const saveListing = listing => async dispatch => {
       type: SAVE_LISTING,
       payload: res.data
     });
+
     dispatch(setAlert("Listing Saved", "success"));
   } catch (err) {
     console.log(err);
+
     dispatch(setAlert(err.response.data.msg, "danger"));
   }
 };
@@ -51,13 +52,13 @@ export const saveListing = listing => async dispatch => {
 //Remove Listing
 export const removeListing = id => async dispatch => {
   try {
-    console.log("Removed Id " + id);
     const res = await axios.put("/api/profile/unfave/" + id);
-    console.log(res.data);
+
     dispatch({
       type: UPDATE_FAVES,
       payload: res.data
     });
+
     dispatch(setAlert("Favorites Updated", "success"));
   } catch (err) {
     dispatch(setAlert(err.response.data.msg, "danger"));

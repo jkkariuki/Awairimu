@@ -4,7 +4,6 @@ import {
   SEARCH_LISTINGS,
   GET_LISTING,
   LISTING_ERROR
-  // LOADING
 } from "./types";
 
 //get listing by id

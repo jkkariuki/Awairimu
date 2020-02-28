@@ -23,8 +23,6 @@ const Listing = ({
 }) => {
   const [formData, setFormData] = useState("");
 
-  // const { name, phone, msg } = formData;
-
   useEffect(() => {
     getListingById(match.params.id);
   }, [getListingById, match.params.id]);
@@ -36,17 +34,6 @@ const Listing = ({
       setAlert("Please Login/Register to save listings!", "danger");
     }
   };
-
-  // const onChange = e => setFormData(e.target.value);
-
-  // const onSubmit = async e => {
-  //   e.preventDefault();
-  //   console.log(listing + " HELLO LISTING");
-
-  //   contactMsg(listing, { formData });
-  //   setFormData("");
-  //   // setAlert("Success!", "success");
-  // };
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -174,9 +161,7 @@ Listing.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  // listing: state.simplyRets.listing,
   listing: state.simplyRets,
-  // loading: state.simplyRets,
   auth: state.auth
 });
 

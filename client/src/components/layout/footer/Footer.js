@@ -12,16 +12,18 @@ const Footer = () => {
         <div className='footer-copyright text-center py-3' id='footer'>
           <div style={{ marginRight: "0px" }} className='row'>
             <div className='col-lg-4 col-md-4 footerCol'>
-              <h7 class='text-uppercase font-weight-bold'>Contact</h7>
+              <h6 className='text-uppercase font-weight-bold footContact'>
+                Contact
+              </h6>
 
               <p>
-                <i class='fas fa-home  '></i> Jersey City, NJ 07307, US
+                <i className='fas fa-home  '></i> Jersey City, NJ 07307, US
               </p>
               <p>
-                <i class='fas fa-envelope  '></i> info@example.com
+                <i className='fas fa-envelope  '></i> info@example.com
               </p>
               <p>
-                <i class='fas fa-phone  '></i> +(201) 987-6543
+                <i className='fas fa-phone  '></i> +(201) 987-6543
               </p>
               <div className='container'>
                 <ul className='list-unstyled list-inline text-center py-2'>

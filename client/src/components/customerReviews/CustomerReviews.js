@@ -1,5 +1,4 @@
 import React from "react";
-// import img from "../../img/round.png";
 import "./CustomerReviews.css";
 import reviewer1 from "../../img/reviewer1.jpg";
 import reviewer2 from "../../img/reviewer2.jpg";
@@ -17,11 +16,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 const CustomerReviews = () => {
   return (
     <div id='reviewsContainer' className='container'>
-      <div
-        style={{
-          margin: "75px auto"
-        }}
-      >
+      <div>
         <h3 id='carouselHeader'>Satisfied Customers!</h3>
       </div>
 
@@ -48,10 +43,10 @@ const CustomerReviews = () => {
                   distinctio sed dolores, magni fugit nemo cum expedita. Totam a
                   accusantium sunt aut autem placeat officia.&rdquo;
                 </p>
+                <p>
+                  <em>&mdash; Jean Smith</em>
+                </p>
               </blockquote>
-              <p>
-                <em>&mdash; Jean Smith</em>
-              </p>
             </div>
           </Slide>
           <Slide index={1}>
@@ -71,10 +66,10 @@ const CustomerReviews = () => {
                   distinctio sed dolores, magni fugit nemo cum expedita. Totam a
                   accusantium sunt aut autem placeat officia.&rdquo;
                 </p>
+                <p>
+                  <em>&mdash; Jean Smith</em>
+                </p>
               </blockquote>
-              <p>
-                <em>&mdash; Jean Smith</em>
-              </p>
             </div>
           </Slide>
           <Slide index={2}>
@@ -115,7 +110,4 @@ const CustomerReviews = () => {
   );
 };
 
-// CustomerReviews.propTypes = {
-//   carousel: PropTypes.func.isRequired
-// };
 export default CustomerReviews;

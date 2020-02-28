@@ -9,19 +9,12 @@ const auth = {
   }
 };
 
-// const auth = {
-//   auth: {
-//     api_key: JSON.stringify(process.env.API_KEY),
-//     domain: JSON.stringify(process.env.DOMAIN)
-//   }
-// };
-
 const transporter = nodemailer.createTransport(mailGun(auth));
 
 const sendMail = (email, text, subject, cb) => {
   const mailOptions = {
-    from: email, // TODO replace this with your own email
-    to: "ajkariuki589@gmail.com", // TODO: the receiver email has to be authorized for the free tier
+    from: email,
+    to: "ajkariuki589@gmail.com",
     subject,
     text
   };

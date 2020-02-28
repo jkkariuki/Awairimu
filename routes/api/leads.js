@@ -32,8 +32,6 @@ router.post(
     }
 
     const { firstName, lastName, email, password } = req.body;
-    console.log(firstName);
-    console.log(email);
 
     try {
       let lead = await Lead.findOne({ email });
@@ -47,7 +45,6 @@ router.post(
       }
 
       lead = new Lead({
-        // adminUser: adminUser.id,
         firstName,
         lastName,
         email,

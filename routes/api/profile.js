@@ -1,5 +1,3 @@
-// require("dotenv").config({ path: __dirname + "/.env" });
-
 const express = require("express");
 const request = require("request");
 const { check, validationResult } = require("express-validator/check");
@@ -21,9 +19,7 @@ router.get("/savedListings", auth, async (req, res) => {
       _id: req.user.id
     }).select("-password");
     if (!user) {
-      return res
-        .status(400)
-        .json({ msg: "There is no  profile for this user" });
+      return res.status(400).json({ msg: "User Not Found" });
     }
 
     res.json(user.favorites);
@@ -53,6 +49,14 @@ router.post("/favorites", auth, async (req, res) => {
     const user = await Lead.findOne({
       _id: req.user.id
     }).select("-password");
+
+    if (!user) {
+      return res
+        .status(400)
+
+        .json({ errors: [{ msg: "Please log in to save" }] });
+    }
+
     if (
       user.favorites.filter(favorite => favorite.mlsId === newFave.mlsId)
         .length > 0
@@ -63,13 +67,6 @@ router.post("/favorites", auth, async (req, res) => {
     user.favorites.push(newFave);
 
     await user.save();
-
-    if (!user) {
-      return res
-        .status(400)
-
-        .json({ errors: [{ msg: "Please log in to save" }] });
-    }
 
     res.json(user);
   } catch (err) {

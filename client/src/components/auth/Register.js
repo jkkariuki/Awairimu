@@ -5,9 +5,7 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import logo from "../../img/logo.jpeg";
-
 import "./form.css";
-// import { setAlert } from "../../actions/alert";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -27,13 +25,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Passwords do not match!", "danger");
-      console.log("Passwords don't match");
     } else {
       register({ firstName, lastName, email, password });
       setAlert("Success!", "danger");
-
-      console.log("SUCCESS");
-      console.log(firstName, lastName, email, password);
     }
   };
 

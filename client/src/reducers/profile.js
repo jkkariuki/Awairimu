@@ -10,8 +10,6 @@ import {
 const initialState = {
   user: null,
   favorites: [],
-  isAuthenticated: null,
-  profiles: [],
   loading: true,
   error: {}
 };
@@ -24,14 +22,12 @@ export default function(state = initialState, action) {
     case UPDATE_FAVES:
       return {
         ...state,
-        isAuthenticated: null,
         favorites: payload,
         loading: false
       };
     case LISTING_MSG:
       return {
         ...state,
-        isAuthenticated: null,
         user: payload,
         loading: false
       };

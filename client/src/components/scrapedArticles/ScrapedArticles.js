@@ -12,10 +12,6 @@ const ScrapedArticles = ({ scrapeArticles, scrapedArticles, loading }) => {
     scrapeArticles();
   }, [scrapeArticles]);
 
-  // console.log(links);
-  // console.log(imageLinks);
-  // console.log(titles);
-
   return (
     <div className='container'>
       <h3 id='scrapedHeading'>NJ Living</h3>

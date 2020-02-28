@@ -31,7 +31,6 @@ router.get("/listing/:id", async (req, res) => {
       if (response.statusCode !== 200) {
         return res.status(400).json({ msg: "No Github profile found" });
       }
-      // console.log(JSON.parse(body));
       res.json(JSON.parse(body));
     });
   } catch (err) {
@@ -63,7 +62,7 @@ router.post("/search", async (req, res) => {
       if (error) console.log(error);
 
       if (response.statusCode !== 200) {
-        return res.status(400).json({ msg: "No Github profile found" });
+        return res.status(400).json({ msg: "Not Found" });
       }
       res.json(JSON.parse(body));
     });
@@ -93,7 +92,7 @@ router.post("/listings", async (req, res) => {
       if (error) console.log(error);
 
       if (response.statusCode !== 200) {
-        return res.status(400).json({ msg: "No Github profile found" });
+        return res.status(400).json({ msg: "Not Found" });
       }
       res.json(JSON.parse(body));
     });
