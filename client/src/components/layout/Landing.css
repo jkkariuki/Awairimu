@@ -16,6 +16,9 @@
   padding: 6rem 4rem;
   height: 550px;
 }
+.landing-jumbo h1 {
+  margin-top: 50px;
+}
 
 .navLogo {
   height: 50px;
